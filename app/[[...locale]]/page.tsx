@@ -7,6 +7,7 @@ import { HeroCard } from "../components/HeroCard";
 import { LocaleChooser } from "../components/LocaleChooser";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { ServicesSection } from "../components/ServicesSection";
+import { SectionUrlTracker } from "../components/SectionUrlTracker";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { isLocale, type Locale } from "../lib/locales";
@@ -119,6 +120,7 @@ export default async function HomePage({ params }: LocalePageProps) {
         <ProjectsSection projects={portfolio.projects} ui={ui} />
       </main>
       <SiteFooter profile={profile} contacts={portfolio.contacts} ui={ui} />
+      <SectionUrlTracker locale={locale} />
     </>
   );
 }
