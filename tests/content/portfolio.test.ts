@@ -118,4 +118,23 @@ describe("validatePortfolio", () => {
       }),
     ).toThrow(/contacts\[0\]\.href.*match/i);
   });
+
+  it("accepts WhatsApp contacts linked to the matching international phone number", () => {
+    const portfolio = validatePortfolio({
+      ...validPortfolio,
+      contacts: [
+        {
+          label: "WhatsApp",
+          value: "+55 11 995748250",
+          href: "https://wa.me/5511995748250",
+        },
+      ],
+    });
+
+    expect(portfolio.contacts[0]).toEqual({
+      label: "WhatsApp",
+      value: "+55 11 995748250",
+      href: "https://wa.me/5511995748250",
+    });
+  });
 });

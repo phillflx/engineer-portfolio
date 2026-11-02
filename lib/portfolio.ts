@@ -176,8 +176,13 @@ function parseContacts(value: unknown): ContactChannel[] {
     const href = requiredString(item, "href", path);
     const matchesEmail = contactValue.includes("@") && href === `mailto:${contactValue}`;
     const matchesProfile = isHttpsUrl(contactValue) && href === contactValue;
+    const phoneDigits = contactValue.replace(/\D/g, "");
+    const matchesWhatsApp =
+      label === "WhatsApp" &&
+      /^\+\d[\d ]+$/.test(contactValue) &&
+      href === `https://wa.me/${phoneDigits}`;
 
-    if (!matchesEmail && !matchesProfile) {
+    if (!matchesEmail && !matchesProfile && !matchesWhatsApp) {
       return fail(`${path}.href`, "must match its displayed contact value");
     }
 

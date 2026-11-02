@@ -1,47 +1,47 @@
 {
   "profile": {
-    "name": "Your Name",
-    "role": "Software Engineer",
-    "introduction": "I design and build thoughtful digital experiences, bringing ideas to life with clean code and a little creative electricity.",
+    "name": "Philipe Felix dos Santos",
+    "role": "Software Engineer & Data Engineer",
+    "introduction": "I design and build data platforms, backend services and web applications, bringing 15+ years of experience in cloud-native architecture, ETL pipelines and technical leadership.",
     "primaryAction": {
       "label": "Let’s talk",
       "href": "#contact"
     },
-    "pageTitle": "Your Name — Software Engineer",
-    "metaDescription": "Explore the software engineering services and selected work of Your Name.",
+    "pageTitle": "Philipe Felix dos Santos — Software Engineer & Data Engineer",
+    "metaDescription": "Explore the software and data engineering services and selected work of Philipe Felix dos Santos.",
     "canonicalUrl": "https://portfolio.example.com",
     "socialImage": "/images/social-preview.png"
   },
   "services": [
     {
+      "title": "Data engineering",
+      "description": "Data pipelines and ETL on AWS and Google Cloud, from ingestion with Apache Airflow to analytics-ready datasets in BigQuery and Amazon Athena."
+    },
+    {
+      "title": "Backend and APIs",
+      "description": "REST APIs and microservices in Python, Java and Node.js, built with Docker, Kubernetes and CI/CD pipelines."
+    },
+    {
       "title": "Web development",
-      "description": "Responsive websites and web applications built around clear, reliable experiences."
+      "description": "Responsive web applications built with JavaScript, TypeScript, React, Vue.js and modern front-end tooling."
     },
     {
-      "title": "Interface engineering",
-      "description": "Accessible, expressive interfaces that turn thoughtful design into working products."
-    },
-    {
-      "title": "Product prototyping",
-      "description": "Focused prototypes that help teams explore ideas and move toward confident decisions."
-    },
-    {
-      "title": "Technical collaboration",
-      "description": "Practical engineering support for teams refining, extending, or improving a product."
+      "title": "Technical leadership",
+      "description": "Architecture decisions, code reviews and mentoring for engineering teams, including AI-powered applications using RAG and Model Context Protocol (MCP)."
     }
   ],
   "projects": [
     {
-      "title": "Digital experiences",
-      "summary": "A sample project card. Replace this description with a real project and its outcomes."
+      "title": "Device Upgrade Intelligence Platform",
+      "summary": "Led a data science initiative to identify mobile device upgrades from event logs and network traffic. Built for UOL, the device identification methodology secured three consecutive years of contracts with a major consumer electronics company."
     },
     {
-      "title": "Interface experiments",
-      "summary": "A sample project card. Add a verified project summary and a public link when available."
+      "title": "UOL Tag Manager and PayUOL",
+      "summary": "Built advertising resource management, tracking and retargeting tools for UOL, along with PayUOL, a paywall solution across UOL pages with segmented testing."
     },
     {
-      "title": "Creative technology",
-      "summary": "A sample project card. Update with work that accurately represents your experience."
+      "title": "Veja São Paulo app",
+      "summary": "Developed a hybrid mobile app for Editora Abril that recommends establishments based on the user’s location."
     }
   ],
   "contacts": [
@@ -59,6 +59,11 @@
       "label": "GitHub",
       "value": "https://github.com/phillflx",
       "href": "https://github.com/phillflx"
+    },
+    {
+      "label": "WhatsApp",
+      "value": "+55 11 995748250",
+      "href": "https://wa.me/5511995748250"
     }
   ]
 }
