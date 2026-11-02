@@ -59,6 +59,7 @@ main > section {
 .carousel__buttons {
   display: flex;
   gap: 0.6rem;
+  margin-left: auto;
 }
 
 .carousel__button {
@@ -90,6 +91,10 @@ main > section {
   scrollbar-width: thin;
   list-style: none;
   -webkit-overflow-scrolling: touch;
+}
+
+.carousel__track--justified {
+  justify-content: space-between;
 }
 
 .carousel__item {

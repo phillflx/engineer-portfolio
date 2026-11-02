@@ -33,10 +33,13 @@ export function ContentCarousel({
     atStart: true,
     atEnd: itemCount <= 1,
   });
+  const [itemsFit, setItemsFit] = useState(false);
 
   const updatePosition = useCallback(() => {
     const viewport = viewportRef.current;
     if (!viewport) return;
+
+    setItemsFit(viewport.scrollWidth <= viewport.clientWidth + 1);
 
     const items = Array.from(viewport.children);
     const currentScroll = viewport.scrollLeft;
@@ -104,30 +107,32 @@ export function ContentCarousel({
               .replace("{total}", String(itemCount))}
           </p>
         ) : null}
-        <div className="carousel__buttons">
-          <button
-            type="button"
-            className="carousel__button"
-            aria-label={previousLabel}
-            onClick={previous}
-            disabled={position.atStart}
-          >
-            <span aria-hidden="true">←</span>
-          </button>
-          <button
-            type="button"
-            className="carousel__button"
-            aria-label={nextLabel}
-            onClick={next}
-            disabled={position.atEnd}
-          >
-            <span aria-hidden="true">→</span>
-          </button>
-        </div>
+        {!itemsFit ? (
+          <div className="carousel__buttons">
+            <button
+              type="button"
+              className="carousel__button"
+              aria-label={previousLabel}
+              onClick={previous}
+              disabled={position.atStart}
+            >
+              <span aria-hidden="true">←</span>
+            </button>
+            <button
+              type="button"
+              className="carousel__button"
+              aria-label={nextLabel}
+              onClick={next}
+              disabled={position.atEnd}
+            >
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        ) : null}
       </div>
       <ul
         ref={viewportRef}
-        className="carousel__track"
+        className={`carousel__track${itemsFit ? " carousel__track--justified" : ""}`}
         aria-label={label}
         onScroll={updatePosition}
       >
