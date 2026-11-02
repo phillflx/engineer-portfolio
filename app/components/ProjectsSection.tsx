@@ -17,6 +17,7 @@ export function ProjectsSection({ projects, ui }: ProjectsSectionProps) {
       <ContentCarousel
         label={ui.projectsCarouselLabel}
         positionLabel={ui.carouselPosition}
+        showPosition={false}
         previousLabel={ui.carouselPreviousProjects}
         nextLabel={ui.carouselNextProjects}
       >

@@ -12,6 +12,7 @@ import {
 type ContentCarouselProps = {
   label: string;
   positionLabel: string;
+  showPosition?: boolean;
   previousLabel: string;
   nextLabel: string;
   children: ReactNode;
@@ -20,6 +21,7 @@ type ContentCarouselProps = {
 export function ContentCarousel({
   label,
   positionLabel,
+  showPosition = true,
   previousLabel,
   nextLabel,
   children,
@@ -95,11 +97,13 @@ export function ContentCarousel({
   return (
     <div className="carousel">
       <div className="carousel__controls">
-        <p className="carousel__position" aria-live="polite">
-          {positionLabel
-            .replace("{current}", String(position.currentIndex + 1))
-            .replace("{total}", String(itemCount))}
-        </p>
+        {showPosition ? (
+          <p className="carousel__position" aria-live="polite">
+            {positionLabel
+              .replace("{current}", String(position.currentIndex + 1))
+              .replace("{total}", String(itemCount))}
+          </p>
+        ) : null}
         <div className="carousel__buttons">
           <button
             type="button"

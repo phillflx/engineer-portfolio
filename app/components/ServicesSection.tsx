@@ -17,6 +17,7 @@ export function ServicesSection({ services, ui }: ServicesSectionProps) {
       <ContentCarousel
         label={ui.servicesCarouselLabel}
         positionLabel={ui.carouselPosition}
+        showPosition={false}
         previousLabel={ui.carouselPreviousServices}
         nextLabel={ui.carouselNextServices}
       >
