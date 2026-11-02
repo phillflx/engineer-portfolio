@@ -8,6 +8,7 @@ the standard development, test, and static build commands before these steps can
 
 - Node.js version supported by the selected Next.js release.
 - npm and dependencies installed from the project manifest.
+- Chromium installed for Playwright with `npx playwright install chromium`.
 - Portfolio JSON populated with the required fields in [data-model.md](data-model.md).
 
 ## Run locally
@@ -27,12 +28,13 @@ the standard development, test, and static build commands before these steps can
 
 1. Run the project test command, `npm test`, to validate required JSON content and
    carousel behavior.
-2. Run the production static build with `npm run build`.
-3. Inspect the exported output directory (`out/`) and verify that the generated
+2. Run `npm run test:e2e` to validate the homepage on desktop and mobile Chromium.
+3. Run the production static build with `npm run build`.
+4. Inspect the exported output directory (`out/`) and verify that the generated
    homepage contains the primary page content, descriptive metadata, canonical URL,
    Open Graph metadata, and Twitter/X card metadata without requiring a browser-side
    JSON request.
-4. Verify the exported site can be served as static files over HTTPS by the target
+5. Verify the exported site can be served as static files over HTTPS by the target
    hosting environment.
 
 ## Expected outcome

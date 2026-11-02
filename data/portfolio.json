@@ -1,0 +1,48 @@
+{
+  "profile": {
+    "name": "Your Name",
+    "role": "Software Engineer",
+    "introduction": "I design and build thoughtful digital experiences, bringing ideas to life with clean code and a little creative electricity.",
+    "primaryAction": {
+      "label": "Let’s talk",
+      "href": "#contact"
+    },
+    "pageTitle": "Your Name — Software Engineer",
+    "metaDescription": "Explore the software engineering services and selected work of Your Name.",
+    "canonicalUrl": "https://portfolio.example.com",
+    "socialImage": "/images/social-preview.png"
+  },
+  "services": [
+    {
+      "title": "Web development",
+      "description": "Responsive websites and web applications built around clear, reliable experiences."
+    },
+    {
+      "title": "Interface engineering",
+      "description": "Accessible, expressive interfaces that turn thoughtful design into working products."
+    },
+    {
+      "title": "Product prototyping",
+      "description": "Focused prototypes that help teams explore ideas and move toward confident decisions."
+    },
+    {
+      "title": "Technical collaboration",
+      "description": "Practical engineering support for teams refining, extending, or improving a product."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Digital experiences",
+      "summary": "A sample project card. Replace this description with a real project and its outcomes."
+    },
+    {
+      "title": "Interface experiments",
+      "summary": "A sample project card. Add a verified project summary and a public link when available."
+    },
+    {
+      "title": "Creative technology",
+      "summary": "A sample project card. Update with work that accurately represents your experience."
+    }
+  ],
+  "contacts": []
+}

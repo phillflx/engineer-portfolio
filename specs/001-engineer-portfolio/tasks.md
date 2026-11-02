@@ -18,9 +18,9 @@ and verified as an incremental delivery.
 
 **Purpose**: Initialize the static Next.js application and validation tooling.
 
-- [ ] T001 Initialize a TypeScript Next.js App Router application at the repository root, creating `package.json`, `tsconfig.json`, and the `app/` directory.
-- [ ] T002 Configure `next.config.ts` with static export output and verify the production build writes static assets to `out/`.
-- [ ] T003 Add Vitest and Playwright dependencies and configure `npm test`, `npm run build`, and `playwright.config.ts`.
+- [X] T001 Initialize a TypeScript Next.js App Router application at the repository root, creating `package.json`, `tsconfig.json`, and the `app/` directory.
+- [X] T002 Configure `next.config.ts` with static export output and verify the production build writes static assets to `out/`.
+- [X] T003 Add Vitest and Playwright dependencies and configure `npm test`, `npm run build`, and `playwright.config.ts`.
 
 ---
 
@@ -28,11 +28,11 @@ and verified as an incremental delivery.
 
 **Purpose**: Establish validated JSON content, shared carousel behavior, and a page shell that all stories use.
 
-- [ ] T004 [P] Add failing Vitest cases in `tests/content/portfolio.test.ts` for required profile, service, project, and contact-field validation from `data-model.md`.
-- [ ] T005 Implement TypeScript content types and JSON validation in `lib/portfolio.ts`; enforce each data-model constraint verbatim, including “Non-empty after trimming,” “Valid HTTPS URL for the public homepage,” and “The footer MUST render only configured contact channels.”
-- [ ] T006 Create valid, clearly replaceable sample portfolio content in `data/portfolio.json`; include profile, service, project, and contact entries without inventing real credentials or contact details.
-- [ ] T007 Implement the shared manually controlled carousel in `components/ContentCarousel.tsx`, with labelled content, semantic list items, native previous/next buttons, visible position, keyboard/touch use, boundary states, and no auto-rotation.
-- [ ] T008 Create the shared semantic page shell and section placeholders in `app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `components/SiteHeader.tsx`, `components/HeroCard.tsx`, `components/ServicesSection.tsx`, `components/ProjectsSection.tsx`, and `components/SiteFooter.tsx`; include stable anchor IDs for hero, services, projects, and contact.
+- [X] T004 [P] Add failing Vitest cases in `tests/content/portfolio.test.ts` for required profile, service, project, and contact-field validation from `data-model.md`.
+- [X] T005 Implement TypeScript content types and JSON validation in `lib/portfolio.ts`; enforce each data-model constraint verbatim, including “Non-empty after trimming,” “Valid HTTPS URL for the public homepage,” and “The footer MUST render only configured contact channels.”
+- [X] T006 Create valid, clearly replaceable sample portfolio content in `data/portfolio.json`; include profile, service, project, and contact entries without inventing real credentials or contact details.
+- [X] T007 Implement the shared manually controlled carousel in `components/ContentCarousel.tsx`, with labelled content, semantic list items, native previous/next buttons, visible position, keyboard/touch use, boundary states, and no auto-rotation.
+- [X] T008 Create the shared semantic page shell and section placeholders in `app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `components/SiteHeader.tsx`, `components/HeroCard.tsx`, `components/ServicesSection.tsx`, `components/ProjectsSection.tsx`, and `components/SiteFooter.tsx`; include stable anchor IDs for hero, services, projects, and contact.
 
 **Checkpoint**: JSON content validation, shared carousel, and all page section anchors are available before story implementation.
 
@@ -46,14 +46,14 @@ and verified as an incremental delivery.
 
 ### Tests for User Story 1
 
-- [ ] T009 [P] [US1] Add Playwright acceptance scenarios in `tests/e2e/portfolio-home.spec.ts` for the hero, fixed navigation, section anchors, contact footer, and required rendered metadata.
+- [X] T009 [P] [US1] Add Playwright acceptance scenarios in `tests/e2e/portfolio-home.spec.ts` for the hero, fixed navigation, section anchors, contact footer, and required rendered metadata.
 
 ### Implementation for User Story 1
 
-- [ ] T010 [P] [US1] Implement the fixed, keyboard-accessible section menu in `components/SiteHeader.tsx` and style it in `components/SiteHeader.module.css`.
-- [ ] T011 [P] [US1] Implement the centered hero card and primary action using profile data in `components/HeroCard.tsx` and style it in `components/HeroCard.module.css`.
-- [ ] T012 [P] [US1] Implement the contact footer using configured contact channels only in `components/SiteFooter.tsx` and style it in `components/SiteFooter.module.css`.
-- [ ] T013 [US1] Compose the profile-driven homepage and set descriptive title, meta description, canonical URL, Open Graph and Twitter/X card metadata in `app/page.tsx` and `app/layout.tsx`; add static indexing directives and sitemap generation in `app/robots.ts` and `app/sitemap.ts`.
+- [X] T010 [P] [US1] Implement the fixed, keyboard-accessible section menu in `components/SiteHeader.tsx` and style it in `components/SiteHeader.module.css`.
+- [X] T011 [P] [US1] Implement the centered hero card and primary action using profile data in `components/HeroCard.tsx` and style it in `components/HeroCard.module.css`.
+- [X] T012 [P] [US1] Implement the contact footer using configured contact channels only in `components/SiteFooter.tsx` and style it in `components/SiteFooter.module.css`.
+- [X] T013 [US1] Compose the profile-driven homepage and set descriptive title, meta description, canonical URL, Open Graph and Twitter/X card metadata in `app/page.tsx` and `app/layout.tsx`; add static indexing directives and sitemap generation in `app/robots.ts` and `app/sitemap.ts`.
 
 **Checkpoint**: User Story 1 is independently usable with the service and project section anchors available for later increments.
 
@@ -67,11 +67,11 @@ and verified as an incremental delivery.
 
 ### Tests for User Story 2
 
-- [ ] T014 [P] [US2] Add Playwright scenarios in `tests/e2e/services-carousel.spec.ts` for service-card content, carousel position, control boundaries, keyboard use, and touch scrolling.
+- [X] T014 [P] [US2] Add Playwright scenarios in `tests/e2e/services-carousel.spec.ts` for service-card content, carousel position, control boundaries, keyboard use, and touch scrolling.
 
 ### Implementation for User Story 2
 
-- [ ] T015 [US2] Render validated service offerings through `components/ContentCarousel.tsx` in `components/ServicesSection.tsx` and style the section and cards in `components/ServicesSection.module.css`; preserve service constraints “Non-empty after trimming” and “Non-empty and understandable without additional context.”
+- [X] T015 [US2] Render validated service offerings through `components/ContentCarousel.tsx` in `components/ServicesSection.tsx` and style the section and cards in `components/ServicesSection.module.css`; preserve service constraints “Non-empty after trimming” and “Non-empty and understandable without additional context.”
 
 **Checkpoint**: User Story 2 is independently testable through its service section and carousel.
 
@@ -85,11 +85,11 @@ and verified as an incremental delivery.
 
 ### Tests for User Story 3
 
-- [ ] T016 [P] [US3] Add Playwright scenarios in `tests/e2e/projects-carousel.spec.ts` for project-card summaries, carousel position and boundaries, keyboard/touch use, optional images, and configured links.
+- [X] T016 [P] [US3] Add Playwright scenarios in `tests/e2e/projects-carousel.spec.ts` for project-card summaries, carousel position and boundaries, keyboard/touch use, optional images, and configured links.
 
 ### Implementation for User Story 3
 
-- [ ] T017 [US3] Render validated sample projects through `components/ContentCarousel.tsx` in `components/ProjectsSection.tsx` and style the section and cards in `components/ProjectsSection.module.css`; preserve the constraints “Non-empty after trimming,” “Non-empty and accurately describes the example,” and “If supplied, must be valid and lead to related project information.”
+- [X] T017 [US3] Render validated sample projects through `components/ContentCarousel.tsx` in `components/ProjectsSection.tsx` and style the section and cards in `components/ProjectsSection.module.css`; preserve the constraints “Non-empty after trimming,” “Non-empty and accurately describes the example,” and “If supplied, must be valid and lead to related project information.”
 
 **Checkpoint**: User Story 3 is independently testable through its project section and carousel.
 
@@ -99,9 +99,9 @@ and verified as an incremental delivery.
 
 **Purpose**: Validate the complete homepage against responsive, accessible, SEO, and static-delivery requirements.
 
-- [ ] T018 [P] Add cross-cutting Playwright checks in `tests/e2e/accessibility-responsive.spec.ts` for keyboard navigation, legibility, reduced-motion behavior, and usable layouts at 320 CSS pixels and 1440 CSS pixels without horizontal page scrolling.
-- [ ] T019 Review and correct responsive layout, visible focus, contrast, and reduced-motion styling in `app/globals.css`, `components/SiteHeader.module.css`, `components/HeroCard.module.css`, `components/ServicesSection.module.css`, `components/ProjectsSection.module.css`, and `components/SiteFooter.module.css`.
-- [ ] T020 Run `npm test` and `npm run build`, inspect the generated homepage and metadata in `out/`, and complete the scenarios in `specs/001-engineer-portfolio/quickstart.md`.
+- [X] T018 [P] Add cross-cutting Playwright checks in `tests/e2e/accessibility-responsive.spec.ts` for keyboard navigation, legibility, reduced-motion behavior, and usable layouts at 320 CSS pixels and 1440 CSS pixels without horizontal page scrolling.
+- [X] T019 Review and correct responsive layout, visible focus, contrast, and reduced-motion styling in `app/globals.css`, `components/SiteHeader.module.css`, `components/HeroCard.module.css`, `components/ServicesSection.module.css`, `components/ProjectsSection.module.css`, and `components/SiteFooter.module.css`.
+- [X] T020 Run `npm test` and `npm run build`, inspect the generated homepage and metadata in `out/`, and complete the scenarios in `specs/001-engineer-portfolio/quickstart.md`.
 
 ---
 

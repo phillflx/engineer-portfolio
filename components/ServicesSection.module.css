@@ -1,0 +1,76 @@
+.section {
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+}
+
+.heading {
+  margin-bottom: 2rem;
+}
+
+.kicker {
+  margin: 0 0 0.6rem;
+  color: var(--color-neon);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.heading h2 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  letter-spacing: -0.06em;
+}
+
+.heading h2 span {
+  color: var(--color-pink);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  min-height: 258px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  background:
+    radial-gradient(ellipse at 100% 0, rgb(103 255 225 / 7%), transparent 48%),
+    var(--color-surface);
+  flex-direction: column;
+}
+
+.number {
+  color: var(--color-neon);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.card h3 {
+  max-width: 16rem;
+  margin: auto 0 0.8rem;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.card p {
+  max-width: 20rem;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.arrow {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
+  color: var(--color-pink);
+  font-size: 1.2rem;
+}
+
+@media (max-width: 620px) {
+  .section {
+    width: calc(100% - 2rem);
+    padding-top: 3.5rem;
+    padding-bottom: 4.5rem;
+  }
+}

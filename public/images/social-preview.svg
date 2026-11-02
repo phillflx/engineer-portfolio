@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111522"/>
+      <stop offset="1" stop-color="#08090e"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#67ffe1" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#67ffe1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="980" cy="210" r="330" fill="url(#glow)"/>
+  <path d="M0 520 1200 120M0 590 1200 190M0 450 1200 50" stroke="#fff" stroke-opacity=".04"/>
+  <rect x="64" y="58" width="1072" height="514" fill="none" stroke="#67ffe1" stroke-opacity=".35"/>
+  <text x="104" y="150" fill="#67ffe1" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="8">SOFTWARE ENGINEER</text>
+  <text x="100" y="300" fill="#f3f5ff" font-family="Arial,sans-serif" font-size="96" font-weight="700">Your Name</text>
+  <text x="104" y="375" fill="#ff62d8" font-family="Arial,sans-serif" font-size="40">Building digital futures.</text>
+  <text x="104" y="510" fill="#a4a8ba" font-family="Arial,sans-serif" font-size="20" letter-spacing="5">PORTFOLIO / SELECTED WORK</text>
+</svg>
