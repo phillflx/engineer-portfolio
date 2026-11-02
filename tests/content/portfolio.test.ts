@@ -12,7 +12,7 @@ const validPortfolio = {
     },
     pageTitle: "Your Name — Software Engineer",
     metaDescription: "Portfolio of a software engineer.",
-    canonicalUrl: "https://portfolio.example.com/",
+    canonicalUrl: "https://philipefelix.com/",
     socialImage: "/images/social-preview.svg",
   },
   services: [
@@ -57,7 +57,7 @@ describe("validatePortfolio", () => {
     expect(() =>
       validatePortfolio({
         ...validPortfolio,
-        profile: { ...validPortfolio.profile, canonicalUrl: "http://portfolio.example.com/" },
+        profile: { ...validPortfolio.profile, canonicalUrl: "http://philipefelix.com/" },
       }),
     ).toThrow(/canonicalUrl.*HTTPS/i);
   });

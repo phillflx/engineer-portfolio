@@ -59,7 +59,11 @@ export async function generateMetadata({
   const canonicalUrl = new URL(`/${locale}`, siteOrigin).toString();
   const englishUrl = new URL("/en", siteOrigin).toString();
   const portugueseUrl = new URL("/pt-BR", siteOrigin).toString();
-  const socialImage = new URL(socialPreview.src, siteOrigin).toString();
+  const configuredSocialImage =
+    profile.socialImage === "/images/social-preview.png"
+      ? socialPreview.src
+      : profile.socialImage ?? socialPreview.src;
+  const socialImage = new URL(configuredSocialImage, siteOrigin).toString();
 
   return {
     metadataBase: siteOrigin,
@@ -79,7 +83,14 @@ export async function generateMetadata({
       title: profile.pageTitle,
       description: profile.metaDescription,
       url: canonicalUrl,
-      images: [{ url: socialImage, alt: ui.socialImageAlt }],
+      images: [
+        {
+          url: socialImage,
+          alt: ui.socialImageAlt,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",

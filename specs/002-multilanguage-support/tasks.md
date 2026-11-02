@@ -174,3 +174,9 @@ responsive behavior, and static-export reliability.
    as independently testable increments.
 4. Finish with translated responsive/accessibility checks and full static build
    verification.
+
+## Phase 7: Convergence
+
+- [X] T024 CRITICAL: Replace the reserved `portfolio.example.com` origin with the verified public HTTPS origin across locale data, robots and sitemap output, and related checks; verify generated canonical and sitemap URLs per Constitution VI and FR-009 (partial).
+- [X] T025 CRITICAL: Replace the generic “Your Name” social preview asset with an accurate portfolio image and verify both locale metadata reference it per Constitution VI and FR-009 (partial).
+- [X] T026 Add assertions for localized descriptions, canonical and social URLs, preview images, and card type for both locales per T019 and SC-004 (partial).

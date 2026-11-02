@@ -51,7 +51,7 @@ test("visitors can identify the engineer and find the contact section", async ({
   );
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
-    "https://portfolio.example.com/en",
+    "https://philipefelix.com/en",
   );
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
     "content",
