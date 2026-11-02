@@ -24,7 +24,7 @@ export function SiteFooter({ profile, contacts, ui }: SiteFooterProps) {
             <ul>
               {contacts.map((contact) => (
                 <li key={`${contact.label}-${contact.href}`}>
-                  <a href={contact.href}>
+                  <a href={contact.href} target="_blank">
                     <span className={styles.contactLabel}>{contact.label}</span>
                     <span className={styles.contactValue}>{contact.value}</span>
                     <span className={styles.contactArrow} aria-hidden="true">↗</span>
