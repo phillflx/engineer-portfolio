@@ -53,3 +53,28 @@ test("service cards match the tallest card in both locales and viewport sizes", 
     }
   }
 });
+
+test("service card content starts near the top of each card", async ({ page }) => {
+  for (const locale of ["en", "pt-BR"]) {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto(`/${locale}#services`);
+
+    const cards = page
+      .getByRole("list", {
+        name: locale === "en" ? "Service offerings" : "Serviços oferecidos",
+      })
+      .locator(".carousel__item > article");
+    const titleOffsets = await cards.evaluateAll((items) =>
+      items.map((item) => {
+        const card = item as HTMLElement;
+        const title = card.querySelector("h3");
+        return title
+          ? title.getBoundingClientRect().top -
+              card.getBoundingClientRect().top
+          : Number.POSITIVE_INFINITY;
+      }),
+    );
+
+    expect(titleOffsets.every((offset) => offset < 150)).toBe(true);
+  }
+});
