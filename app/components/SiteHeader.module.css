@@ -70,26 +70,56 @@
   color: var(--color-neon);
 }
 
-.languageSelector select {
+.languageSelector {
+  position: relative;
+}
+
+.languageTrigger {
+  display: flex;
   max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
   padding: 0.55rem 0.4rem;
   border: 1px solid var(--color-neon);
   border-radius: 0;
   background: var(--color-surface);
   color: var(--color-text);
+  cursor: pointer;
   font: inherit;
   font-size: 0.75rem;
 }
 
-.visuallyHidden {
+.languageOptions {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 1;
+  min-width: max-content;
+  padding: 0.25rem;
+  border: 1px solid var(--color-neon);
+  background: var(--color-surface);
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 35%);
+}
+
+.languageOptions button {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
   white-space: nowrap;
-  clip-path: inset(50%);
+}
+
+.languageOptions button:hover,
+.languageOptions button:focus-visible,
+.languageOptions button[aria-current="true"] {
+  background: rgb(103 255 225 / 12%);
+  color: var(--color-neon);
 }
 
 .contactLink span {
@@ -119,7 +149,7 @@
     padding: 0.55rem 0.4rem;
   }
 
-  .languageSelector select {
+  .languageTrigger {
     width: 4.7rem;
     padding: 0.5rem 0.15rem;
     font-size: 0.65rem;

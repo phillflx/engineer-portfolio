@@ -34,16 +34,60 @@ test("the language selector changes language and preserves the current section",
   page,
 }) => {
   await page.goto("/en#projects");
-  await page.getByLabel("Language").selectOption("pt-BR");
+  await page.getByLabel("Language").click();
+  await page.getByRole("button", { name: "Português (Brasil)" }).click();
 
   await expect(page).toHaveURL(/\/pt-BR#projects$/);
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
   await expect(page.locator("#projects")).toBeInViewport();
   await expect(page.getByRole("heading", { level: 2, name: "Trabalhos selecionados." })).toBeVisible();
 
-  await page.getByLabel("Idioma").selectOption("en");
+  await page.getByLabel("Idioma").click();
+  await page.getByRole("button", { name: "English" }).click();
   await expect(page).toHaveURL(/\/en#projects$/);
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
+});
+
+test("opening the language selector does not scroll the current page position", async ({
+  page,
+}) => {
+  await page.goto("/en");
+  await page.locator("#projects").scrollIntoViewIfNeeded();
+  await expect(page.locator("#projects")).toBeInViewport();
+  await page.evaluate(() => window.scrollTo({ top: 1500, behavior: "instant" }));
+
+  const scrollY = await page.evaluate(() => window.scrollY);
+  const trigger = page.getByRole("button", { name: "Language" });
+  const bounds = await trigger.boundingBox();
+  expect(bounds).not.toBeNull();
+  await page.mouse.click(
+    bounds!.x + bounds!.width / 2,
+    bounds!.y + bounds!.height / 2,
+  );
+  await expect(page.getByRole("button", { name: "Language" })).toHaveAttribute(
+    "aria-expanded",
+    "true",
+  );
+  await expect
+    .poll(() => page.evaluate(() => window.scrollY))
+    .toBe(scrollY);
+  await expect(page).toHaveURL(/\/en$/);
+});
+
+test("the language selector opens and closes with the keyboard", async ({
+  page,
+}) => {
+  await page.goto("/en");
+  const trigger = page.getByRole("button", { name: "Language" });
+
+  await trigger.focus();
+  await page.keyboard.press("Enter");
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(page.getByRole("button", { name: "Português (Brasil)" })).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(trigger).toBeFocused();
 });
 
 test("Brazilian Portuguese content includes localized controls and the existing contacts", async ({
