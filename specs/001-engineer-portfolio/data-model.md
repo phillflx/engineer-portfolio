@@ -77,7 +77,7 @@ The current section is transient browser state and is not stored in portfolio JS
 
 | Fragment identifier | Page section | Rule |
 |---|---|---|
-| `hero` | Engineer introduction | Current when its visible viewport area is greatest. |
+| `intro` | Engineer introduction | Current when its visible viewport area is greatest. |
 | `services` | Services carousel | Current when its visible viewport area is greatest. |
 | `projects` | Sample projects carousel | Current when its visible viewport area is greatest. |
 | `contact` | Contact footer | Current when its visible viewport area is greatest. |

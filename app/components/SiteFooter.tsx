@@ -38,7 +38,7 @@ export function SiteFooter({ profile, contacts, ui }: SiteFooterProps) {
         </div>
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} {profile.name}</span>
-          <a href="#hero">{ui.backToTop} ↑</a>
+          <a href="#intro">{ui.backToTop} ↑</a>
         </div>
       </div>
     </footer>

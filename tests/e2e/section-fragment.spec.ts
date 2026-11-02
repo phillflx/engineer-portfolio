@@ -1,12 +1,12 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const sectionIds = ["hero", "services", "projects", "contact"] as const;
+const sectionIds = ["intro", "services", "projects", "contact"] as const;
 const sectionHeight = 1200;
 
 async function setEqualSectionHeights(page: Page) {
   await page.addStyleTag({
     content: `
-      #hero,
+      #intro,
       #services,
       #projects,
       #contact {
@@ -76,26 +76,26 @@ test("an exact visible-area tie retains the previously current section", async (
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 1280, height: 801 });
-  await page.goto("/en#hero");
-  await expect(page).toHaveURL(/#hero$/);
+  await page.goto("/en#intro");
+  await expect(page).toHaveURL(/#intro$/);
   await setEqualSectionHeights(page);
 
   const areas = await page.evaluate(() => {
-    const hero = document.getElementById("hero");
+    const intro = document.getElementById("intro");
     const services = document.getElementById("services");
     const header = document.querySelector("header");
-    if (!hero || !services || !header) {
+    if (!intro || !services || !header) {
       throw new Error("Missing section or sticky header");
     }
 
     const headerRect = header.getBoundingClientRect();
-    const heroBottom = hero.getBoundingClientRect().bottom + window.scrollY;
+    const introBottom = intro.getBoundingClientRect().bottom + window.scrollY;
     const visibleTop =
       headerRect.top <= 0 ? Math.max(0, headerRect.bottom) : 0;
     const visibleHeight = window.innerHeight - visibleTop;
     window.dispatchEvent(new WheelEvent("wheel", { deltaY: 1 }));
     window.scrollTo({
-      top: heroBottom - visibleTop - visibleHeight / 2,
+      top: introBottom - visibleTop - visibleHeight / 2,
       behavior: "instant",
     });
 
@@ -114,13 +114,13 @@ test("an exact visible-area tie retains the previously current section", async (
     };
 
     return {
-      hero: visibleArea(hero),
+      intro: visibleArea(intro),
       services: visibleArea(services),
     };
   });
 
-  expect(Math.abs(areas.hero - areas.services)).toBeLessThan(1);
-  await expect(page).toHaveURL(/#hero$/);
+  expect(Math.abs(areas.intro - areas.services)).toBeLessThan(1);
+  await expect(page).toHaveURL(/#intro$/);
 });
 
 test("the browser Back button skips scroll-driven fragment changes", async ({

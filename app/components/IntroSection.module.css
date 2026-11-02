@@ -1,4 +1,4 @@
-.hero {
+.intro {
   position: relative;
   display: grid;
   min-height: min(820px, calc(100svh - 76px));
@@ -178,7 +178,7 @@
 }
 
 @media (max-width: 620px) {
-  .hero {
+  .intro {
     min-height: min(760px, calc(100svh - 68px));
     padding: 2rem 1rem 3.5rem;
   }

@@ -12,7 +12,7 @@ export function SiteHeader({ locale, ui }: SiteHeaderProps) {
   return (
     <header className={styles.header}>
       <nav className={styles.nav} aria-label={ui.mainNavigationLabel}>
-        <a className={styles.brand} href="#hero" aria-label={ui.brandHomeLabel}>
+        <a className={styles.brand} href="#intro" aria-label={ui.brandHomeLabel}>
           <span aria-hidden="true">PF</span>
           <span className={styles.brandText}>{ui.brandTitle}<span>.</span></span>
         </a>

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import englishJson from "../data/portfolio.en.json";
 import portugueseJson from "../data/portfolio.pt-BR.json";
 import socialPreview from "../public/images/social-preview.png";
-import { HeroCard } from "../components/HeroCard";
+import { IntroSection } from "../components/IntroSection";
 import { LocaleChooser } from "../components/LocaleChooser";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { ServicesSection } from "../components/ServicesSection";
@@ -116,7 +116,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       <SectionFragmentTracker key={locale} />
       <SiteHeader locale={locale} ui={ui} />
       <main>
-        <HeroCard profile={profile} ui={ui} />
+        <IntroSection profile={profile} ui={ui} />
         <ServicesSection services={portfolio.services} ui={ui} />
         <ProjectsSection projects={portfolio.projects} ui={ui} />
       </main>

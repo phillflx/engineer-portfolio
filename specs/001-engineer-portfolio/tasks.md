@@ -32,7 +32,7 @@ and verified as an incremental delivery.
 - [X] T005 Implement TypeScript content types and JSON validation in `app/lib/portfolio.ts`; enforce each data-model constraint verbatim, including “Non-empty after trimming,” “Valid HTTPS URL for the public homepage,” and “The footer MUST render only configured contact channels.”
 - [X] T006 Create valid, clearly replaceable sample portfolio content in `app/data/portfolio.json`; include profile, service, project, and contact entries without inventing real credentials or contact details.
 - [X] T007 Implement the shared manually controlled carousel in `app/components/ContentCarousel.tsx`, with labelled content, semantic list items, native previous/next buttons, visible position, keyboard/touch use, boundary states, and no auto-rotation.
-- [X] T008 Create the shared semantic page shell and section placeholders in `app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `app/components/SiteHeader.tsx`, `app/components/HeroCard.tsx`, `app/components/ServicesSection.tsx`, `app/components/ProjectsSection.tsx`, and `app/components/SiteFooter.tsx`; include stable anchor IDs for hero, services, projects, and contact.
+- [X] T008 Create the shared semantic page shell and section placeholders in `app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `app/components/SiteHeader.tsx`, `app/components/IntroSection.tsx`, `app/components/ServicesSection.tsx`, `app/components/ProjectsSection.tsx`, and `app/components/SiteFooter.tsx`; include stable anchor IDs for intro, services, projects, and contact.
 
 **Checkpoint**: JSON content validation, shared carousel, and all page section anchors are available before story implementation.
 
@@ -51,12 +51,12 @@ and verified as an incremental delivery.
 ### Implementation for User Story 1
 
 - [X] T010 [P] [US1] Implement the fixed, keyboard-accessible section menu in `app/components/SiteHeader.tsx` and style it in `app/components/SiteHeader.module.css`.
-- [X] T011 [P] [US1] Implement the centered hero card and primary action using profile data in `app/components/HeroCard.tsx` and style it in `app/components/HeroCard.module.css`.
+- [X] T011 [P] [US1] Implement the centered intro section and primary action using profile data in `app/components/IntroSection.tsx` and style it in `app/components/IntroSection.module.css`.
 - [X] T012 [P] [US1] Implement the contact footer using configured contact channels only in `app/components/SiteFooter.tsx` and style it in `app/components/SiteFooter.module.css`.
 - [X] T013 [US1] Compose the profile-driven homepage and set descriptive title, meta description, canonical URL, Open Graph and Twitter/X card metadata in `app/page.tsx` and `app/layout.tsx`; add static indexing directives and sitemap generation in `app/robots.ts` and `app/sitemap.ts`.
 
-- [X] T014 [P] [US1] Add Playwright scenarios in `tests/e2e/section-fragment.spec.ts` for greatest-visible-area fragment selection across `hero`, `services`, `projects`, and `contact` in both `/en` and `/pt-BR`, exact-area tie stability, browser Back behavior after scroll-driven replacement, and retained menu-link navigation.
-- [X] T015 [US1] Implement `app/components/SectionFragmentTracker.tsx` to track the visible viewport area of the `hero`, `services`, `projects`, and `contact` sections, retain the previous section on equal-area ties, and update changed fragments with `history.replaceState`; render the tracker from `app/[[...locale]]/page.tsx` for localized portfolio pages.
+- [X] T014 [P] [US1] Add Playwright scenarios in `tests/e2e/section-fragment.spec.ts` for greatest-visible-area fragment selection across `intro`, `services`, `projects`, and `contact` in both `/en` and `/pt-BR`, exact-area tie stability, browser Back behavior after scroll-driven replacement, and retained menu-link navigation.
+- [X] T015 [US1] Implement `app/components/SectionFragmentTracker.tsx` to track the visible viewport area of the `intro`, `services`, `projects`, and `contact` sections, retain the previous section on equal-area ties, and update changed fragments with `history.replaceState`; render the tracker from `app/[[...locale]]/page.tsx` for localized portfolio pages.
 
 **Checkpoint**: User Story 1 is independently usable with section anchors, scroll-aware fragments, and configured contact channels.
 
@@ -103,7 +103,7 @@ and verified as an incremental delivery.
 **Purpose**: Validate the complete homepage against responsive, accessible, SEO, and static-delivery requirements.
 
 - [X] T020 [P] Add cross-cutting Playwright checks in `tests/e2e/accessibility-responsive.spec.ts` for keyboard navigation, legibility, reduced-motion behavior, and usable layouts at 320 CSS pixels and 1440 CSS pixels without horizontal page scrolling.
-- [X] T021 Review and correct responsive layout, visible focus, contrast, and reduced-motion styling in `app/globals.css`, `app/components/SiteHeader.module.css`, `app/components/HeroCard.module.css`, `app/components/ServicesSection.module.css`, `app/components/ProjectsSection.module.css`, and `app/components/SiteFooter.module.css`.
+- [X] T021 Review and correct responsive layout, visible focus, contrast, and reduced-motion styling in `app/globals.css`, `app/components/SiteHeader.module.css`, `app/components/IntroSection.module.css`, `app/components/ServicesSection.module.css`, `app/components/ProjectsSection.module.css`, and `app/components/SiteFooter.module.css`.
 - [X] T022 Run `npm test` and `npm run build`, inspect the generated homepage and metadata in `out/`, and complete the scenarios in `specs/001-engineer-portfolio/quickstart.md`.
 - [X] T023 Verify scroll-aware fragments by running `npm run test:e2e -- tests/e2e/section-fragment.spec.ts`, `npm run typecheck`, `npm run lint`, and `npm run build`; complete the fragment scenarios in `specs/001-engineer-portfolio/quickstart.md`.
 
@@ -138,7 +138,7 @@ and verified as an incremental delivery.
 
 ```text
 Task: T010 Implement the fixed section menu in app/components/SiteHeader.tsx and app/components/SiteHeader.module.css
-Task: T011 Implement the hero card in app/components/HeroCard.tsx and app/components/HeroCard.module.css
+Task: T011 Implement the intro section in app/components/IntroSection.tsx and app/components/IntroSection.module.css
 Task: T012 Implement the contact footer in app/components/SiteFooter.tsx and app/components/SiteFooter.module.css
 ```
 

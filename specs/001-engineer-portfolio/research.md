@@ -83,7 +83,7 @@ requires reduced-motion support and clear behavior at carousel boundaries.
 
 ## Scroll-aware URL fragments
 
-**Decision**: Track the viewport-visible area of the existing `hero`, `services`,
+**Decision**: Track the viewport-visible area of the existing `intro`, `services`,
 `projects`, and `contact` sections. The section with the greatest visible area is
 current; if two sections have equal visible area, retain the previous current section
 to avoid fragment flicker. Update the URL fragment with the native History API's

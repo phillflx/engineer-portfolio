@@ -50,12 +50,12 @@ export type PortfolioUi = {
   navServices: string;
   navProjects: string;
   navContact: string;
-  heroAvailability: string;
-  heroGreeting: string;
-  heroHeadline: string;
-  heroAccent: string;
+  introAvailability: string;
+  introGreeting: string;
+  introHeadline: string;
+  introAccent: string;
   scrollHint: string;
-  heroIndex: string;
+  introIndex: string;
   servicesKicker: string;
   servicesTitle: string;
   servicesCarouselLabel: string;
@@ -240,7 +240,7 @@ export function validatePortfolio(value: unknown): PortfolioData {
   const projects = parseProjects(value.projects);
   const contacts = parseContacts(value.contacts);
   const actionHref = profile.primaryAction.href;
-  const validAnchors = new Set(["#hero", "#services", "#projects", "#contact"]);
+  const validAnchors = new Set(["#intro", "#services", "#projects", "#contact"]);
 
   if (
     !validAnchors.has(actionHref) &&
@@ -263,12 +263,12 @@ const uiKeys: (keyof PortfolioUi)[] = [
   "navServices",
   "navProjects",
   "navContact",
-  "heroAvailability",
-  "heroGreeting",
-  "heroHeadline",
-  "heroAccent",
+  "introAvailability",
+  "introGreeting",
+  "introHeadline",
+  "introAccent",
   "scrollHint",
-  "heroIndex",
+  "introIndex",
   "servicesKicker",
   "servicesTitle",
   "servicesCarouselLabel",

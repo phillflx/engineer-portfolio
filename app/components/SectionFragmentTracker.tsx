@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const sectionIds = ["hero", "services", "projects", "contact"] as const;
+const sectionIds = ["intro", "services", "projects", "contact"] as const;
 
 function isSectionId(id: string): id is (typeof sectionIds)[number] {
   return sectionIds.some((sectionId) => sectionId === id);

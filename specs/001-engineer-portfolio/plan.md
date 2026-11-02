@@ -89,7 +89,7 @@ app/
 │   └── page.tsx
 ├── components/
 │   ├── SiteHeader.tsx
-│   ├── HeroCard.tsx
+│   ├── IntroSection.tsx
 │   ├── ContentCarousel.tsx
 │   ├── ServicesSection.tsx
 │   ├── ProjectsSection.tsx
@@ -118,6 +118,6 @@ package.json
 **Structure Decision**: Keep the shared localized page and layout in the optional
 locale route, reusable components and local content under `app/`, and tests and
 configuration at the repository root. The URL-fragment tracker belongs with the
-client-side page components and observes the existing stable section IDs (`hero`,
+client-side page components and observes the existing stable section IDs (`intro`,
 `services`, `projects`, and `contact`). Import the social preview image as a static
 asset so the production build emits it with the other static files.
