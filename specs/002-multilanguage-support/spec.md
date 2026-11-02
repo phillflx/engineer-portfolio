@@ -25,15 +25,19 @@ appears in the selected language.
 
 **Acceptance Scenarios**:
 
-1. **Given** a visitor opens the homepage without choosing a language, **When** the
-   page loads, **Then** the portfolio is presented in English.
-2. **Given** a visitor is viewing the portfolio in English, **When** they select
+1. **Given** a visitor opens the default homepage `/` without choosing a language and their
+   browser's primary preferred language is Portuguese, **When** the page loads,
+   **Then** they are shown the Brazilian Portuguese portfolio at `/pt-BR`.
+2. **Given** a visitor opens the default homepage `/` without choosing a language and their
+   browser's primary preferred language is not Portuguese, **When** the page loads,
+   **Then** they are shown the English portfolio at `/en`.
+3. **Given** a visitor is viewing the portfolio in English, **When** they select
    Brazilian Portuguese, **Then** all user-facing page content and controls appear
    in Brazilian Portuguese.
-3. **Given** a visitor is viewing the portfolio in Brazilian Portuguese, **When**
+4. **Given** a visitor is viewing the portfolio in Brazilian Portuguese, **When**
    they select English, **Then** all user-facing page content and controls appear
    in English.
-4. **Given** a visitor switches languages while viewing a page section, **When**
+5. **Given** a visitor switches languages while viewing a page section, **When**
    the other language is selected, **Then** the visitor remains at the equivalent
    section in the selected language.
 
@@ -52,9 +56,9 @@ and verify that it renders in the specified language.
 
 **Acceptance Scenarios**:
 
-1. **Given** a visitor opens the English homepage URL, **When** the page loads,
+1. **Given** a visitor opens the explicit English URL `/en`, **When** the page loads,
    **Then** it displays in English regardless of the browser's preferred language.
-2. **Given** a visitor opens the Brazilian Portuguese URL, **When** the page loads,
+2. **Given** a visitor opens the explicit Brazilian Portuguese URL `/pt-BR`, **When** the page loads,
    **Then** it displays in Brazilian Portuguese without requiring a prior selection.
 3. **Given** a visitor copies a language-specific URL and shares it, **When** another
    visitor opens that URL, **Then** the same language version is shown.
@@ -94,8 +98,11 @@ metadata.
 - When translated text is longer than its English equivalent, page sections,
   navigation, buttons, and carousel controls MUST remain readable and usable on
   narrow and wide screens.
-- When a language selection is made, it MUST take precedence over browser language
-  preferences for that URL and MUST NOT trigger an unexpected automatic redirect.
+- When a visitor opens the default homepage `/` without an explicit locale URL, the
+  browser's primary preferred language MUST determine the default: Portuguese
+  selects Brazilian Portuguese; all other languages select English.
+- When a visitor opens `/en` or `/pt-BR`, or selects a language manually, that
+  explicit choice MUST take precedence over browser language preferences.
 - When a translation is unavailable for any required user-facing content, the
   English version MUST NOT be mixed into the Brazilian Portuguese version; the
   incomplete translation MUST be treated as a release-blocking content issue.
@@ -106,8 +113,10 @@ metadata.
 
 - **FR-001**: The portfolio MUST support English (`en`) and Brazilian Portuguese
   (`pt-BR`) as complete visitor-facing languages.
-- **FR-002**: The English version MUST be the default when a visitor opens the
-  homepage without selecting a language.
+- **FR-002**: When a visitor opens the default homepage without an explicit locale
+  URL or prior language selection, the site MUST select Brazilian Portuguese if
+  the browser's primary preferred language is Portuguese; otherwise, it MUST select
+  English.
 - **FR-003**: The site MUST provide a clearly labeled, keyboard-operable language
   selector that lets visitors change between English and Brazilian Portuguese.
 - **FR-004**: The selector MUST identify languages by their recognizable names,
@@ -116,7 +125,9 @@ metadata.
   including navigation, headings, biography, services, project descriptions,
   contact labels, buttons, carousel controls, accessible labels, and footer text.
 - **FR-006**: Each supported language MUST have a stable, directly accessible URL
-  that renders that language without relying on stored browser state.
+  (`/en` for English and `/pt-BR` for Brazilian Portuguese) that renders that
+  language without relying on stored browser state; explicit language URLs MUST
+  take precedence over browser preferences.
 - **FR-007**: Switching languages MUST preserve the visitor's equivalent page
   section when possible and MUST provide a safe destination when no equivalent
   section exists.
@@ -147,8 +158,10 @@ metadata.
   language-selector action.
 - **SC-002**: 100% of visitor-facing text and accessible labels are available in
   both English and Brazilian Portuguese, with no mixed-language interface.
-- **SC-003**: 100% of direct visits to a supported language URL display the matching
-  language without requiring a previous visit or saved preference.
+- **SC-003**: 100% of direct visits to `/en` and `/pt-BR` display the matching
+  language without requiring a previous visit or saved preference; visits to `/`
+  select Portuguese when the browser's primary preferred language is Portuguese
+  and English otherwise.
 - **SC-004**: Every supported language version has correct document language,
   localized title and description, canonical URL, alternate language references,
   and matching social preview text.
@@ -157,13 +170,16 @@ metadata.
 
 ## Assumptions
 
-- English is the default language because the existing portfolio is currently
-  written in English.
-- The English homepage remains available at the current primary URL; the
-  Brazilian Portuguese version has a distinct, stable language-specific URL.
-- Language selection is explicit and URL-based. The site does not automatically
-  redirect visitors based on browser settings or persist a selection separately
-  from the URL.
+- English is selected when the browser does not indicate a Portuguese preference;
+  `/en` is the explicit English URL and `/pt-BR` is the explicit Brazilian
+  Portuguese URL.
+- The default homepage `/` chooses the initial locale based on the browser's
+  primary preferred language; each locale also has a distinct, stable
+  language-specific URL.
+- On the default homepage only, a primary preferred language beginning with the
+  Portuguese language code `pt` selects Brazilian Portuguese; otherwise English
+  is selected. Explicit language URLs and manual selections override this default.
+  The selection is not persisted separately from the URL.
 - The profile owner supplies or approves the Brazilian Portuguese translations,
   including the biography, services, project descriptions, and contact labels;
   personal names, contact values, and external profile URLs remain unchanged.

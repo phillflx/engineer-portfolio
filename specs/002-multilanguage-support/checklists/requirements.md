@@ -32,4 +32,4 @@
 ## Notes
 
 - Requirements and success criteria were reviewed against the feature description and project constitution.
-- English is specified as the default based on the existing English portfolio; URL behavior is documented as an assumption.
+- A Portuguese primary browser language selects Brazilian Portuguese on `/`; explicit `/en` and `/pt-BR` URLs take precedence.
