@@ -98,6 +98,10 @@ main > section {
   scroll-snap-align: start;
 }
 
+.carousel__item > * {
+  height: 100%;
+}
+
 .localeChooser {
   display: grid;
   min-height: 100svh;

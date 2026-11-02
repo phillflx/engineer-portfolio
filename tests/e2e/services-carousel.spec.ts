@@ -31,3 +31,25 @@ test("visitors can browse all service offerings using the carousel controls", as
     await expect(page.getByText(/Item [2-4] of 4/)).toBeVisible();
   }
 });
+
+test("service cards match the tallest card in both locales and viewport sizes", async ({
+  page,
+}) => {
+  for (const locale of ["en", "pt-BR"]) {
+    for (const width of [320, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/${locale}#services`);
+
+      const services = page.getByRole("list", {
+        name: locale === "en" ? "Service offerings" : "Serviços oferecidos",
+      });
+      const heights = await services.getByRole("listitem").evaluateAll((items) =>
+        items.map((item) =>
+          (item.firstElementChild as HTMLElement).getBoundingClientRect().height,
+        ),
+      );
+
+      expect(Math.max(...heights) - Math.min(...heights)).toBeLessThanOrEqual(1);
+    }
+  }
+});

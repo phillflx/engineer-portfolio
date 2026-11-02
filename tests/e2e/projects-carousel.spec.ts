@@ -36,3 +36,25 @@ test("visitors can browse sample projects and only see configured project links"
     await expect(items.nth(2)).toContainText("Veja São Paulo app");
   }
 });
+
+test("project cards match the tallest card in both locales and viewport sizes", async ({
+  page,
+}) => {
+  for (const locale of ["en", "pt-BR"]) {
+    for (const width of [320, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/${locale}#projects`);
+
+      const projects = page.getByRole("list", {
+        name: locale === "en" ? "Sample projects" : "Projetos de exemplo",
+      });
+      const heights = await projects.getByRole("listitem").evaluateAll((items) =>
+        items.map((item) =>
+          (item.firstElementChild as HTMLElement).getBoundingClientRect().height,
+        ),
+      );
+
+      expect(Math.max(...heights) - Math.min(...heights)).toBeLessThanOrEqual(1);
+    }
+  }
+});
