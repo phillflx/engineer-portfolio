@@ -7,7 +7,8 @@ This guide describes how to validate the implemented static homepage.
 - Node.js version supported by the selected Next.js release.
 - npm and dependencies installed from the project manifest.
 - Chromium installed for Playwright with `npx playwright install chromium`.
-- Portfolio JSON in `app/data/portfolio.json`, populated with the required fields in
+- Localized portfolio JSON in `app/data/portfolio.en.json` and
+  `app/data/portfolio.pt-BR.json`, populated with the required fields in
   [data-model.md](data-model.md).
 
 ## Run locally
@@ -18,6 +19,9 @@ This guide describes how to validate the implemented static homepage.
    - The hero, fixed menu, services carousel, projects carousel, and contact footer
      render from the supplied JSON.
    - Menu links reach each section while the menu remains available during scrolling.
+   - In both locales, scrolling updates the fragment to the section occupying the
+     greatest visible area; repeated scroll-driven changes do not add browser-history
+     entries.
    - Both carousels expose every card through their controls, keyboard input, and touch.
    - The page remains usable at narrow and wide viewport widths and with reduced motion
      enabled.
@@ -27,7 +31,9 @@ This guide describes how to validate the implemented static homepage.
 
 1. Run the project test command, `npm test`, to validate required JSON content and
    carousel behavior.
-2. Run `npm run test:e2e` to validate the homepage on desktop and mobile Chromium.
+2. Run `npm run test:e2e` to validate the homepage on desktop and mobile Chromium,
+   including section-fragment updates, existing anchor navigation, and Back-button
+   behavior after scroll-driven changes.
 3. Run the production static build with `npm run build`.
 4. Inspect the exported output directory (`out/`) and verify that the generated
    homepage contains the primary page content, descriptive metadata, canonical URL,

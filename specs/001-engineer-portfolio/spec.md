@@ -8,6 +8,13 @@
 
 **Input**: User description: "home page for a software engineer presentation website. it must look modern and feature dark background with bright neon color on buttons to build a cyberpunk vibe. it must have a header main menu which fixes on top when scrolling, a big centered hero card on the first scroll and then sections with carousels for services and sample projects. contact information on the footer"
 
+## Clarifications
+
+### Session 2026-11-02
+
+- Q: As a visitor scrolls, when should the URL fragment switch to identify a new section? → A: Switch when the section occupies the largest visible area of the screen.
+- Q: When scrolling changes the URL fragment, should that change replace the current browser-history entry or add a new entry? → A: Replace the current history entry for scroll-driven changes.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Understand the Engineer and Find Contact Details (Priority: P1)
@@ -32,6 +39,10 @@ contact information are clear and reachable.
    the top while scrolling.
 3. **Given** a visitor reaches the bottom of the homepage, **When** they view the
    footer, **Then** they can find the engineer's configured contact information.
+4. **Given** a visitor scrolls through the homepage, **When** another section
+   occupies the largest visible area of the screen, **Then** the URL fragment
+   identifies that section without adding a browser-history entry for the scroll
+   change.
 
 ---
 
@@ -123,6 +134,9 @@ to view each project example and its summary.
   keyboard navigation, and respect reduced-motion preferences.
 - **FR-012**: Interactive text and neon accents MUST remain legible against their
   backgrounds.
+- **FR-013**: As a visitor scrolls through the homepage, the URL fragment MUST
+  identify the section occupying the largest visible area of the screen without
+  adding a browser-history entry for each scroll-driven change.
 
 ### Key Entities
 
@@ -147,6 +161,10 @@ to view each project example and its summary.
   320 CSS pixels through 1440 CSS pixels without horizontal page scrolling.
 - **SC-005**: All required page metadata is present and accurately represents the
   homepage when checked in the rendered document.
+- **SC-006**: During a scroll through the homepage, the URL fragment identifies
+  each of the hero, services, projects, and contact sections when it occupies the
+  largest visible area of the screen, and scroll-driven fragment changes do not
+  add browser-history entries.
 
 ## Assumptions
 

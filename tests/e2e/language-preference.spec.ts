@@ -52,11 +52,15 @@ test("opening the language selector does not scroll the current page position", 
   page,
 }) => {
   await page.goto("/en");
+  await page.evaluate(() => {
+    window.dispatchEvent(new WheelEvent("wheel", { deltaY: 1 }));
+  });
   await page.locator("#projects").scrollIntoViewIfNeeded();
   await expect(page.locator("#projects")).toBeInViewport();
   await page.evaluate(() => window.scrollTo({ top: 1500, behavior: "instant" }));
 
   const scrollY = await page.evaluate(() => window.scrollY);
+  const currentUrl = page.url();
   const trigger = page.getByRole("button", { name: "Language" });
   const bounds = await trigger.boundingBox();
   expect(bounds).not.toBeNull();
@@ -71,7 +75,7 @@ test("opening the language selector does not scroll the current page position", 
   await expect
     .poll(() => page.evaluate(() => window.scrollY))
     .toBe(scrollY);
-  await expect(page).toHaveURL(/\/en$/);
+  await expect(page).toHaveURL(currentUrl);
 });
 
 test("the language selector opens and closes with the keyboard", async ({
