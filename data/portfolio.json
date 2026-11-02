@@ -44,5 +44,21 @@
       "summary": "A sample project card. Update with work that accurately represents your experience."
     }
   ],
-  "contacts": []
+  "contacts": [
+    {
+      "label": "Email",
+      "value": "philipe.felixdossantos@gmail.com",
+      "href": "mailto:philipe.felixdossantos@gmail.com"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "https://www.linkedin.com/in/philipefelix/",
+      "href": "https://www.linkedin.com/in/philipefelix/"
+    },
+    {
+      "label": "GitHub",
+      "value": "https://github.com/phillflx",
+      "href": "https://github.com/phillflx"
+    }
+  ]
 }
