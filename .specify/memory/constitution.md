@@ -1,9 +1,9 @@
 <!--
 Sync Impact Report
-Version change: uninitialized → 1.0.0
-Modified principles: template placeholders → Static Delivery; Accessible, Responsive UX;
-  Security and Privacy; Verified Behavior; Simplicity and Maintainability
-Added sections: Static Webapp Requirements; Delivery and Quality
+Version change: 1.0.0 -> 1.1.0
+Modified principles: none
+Added principles: Search Engine Optimization (SEO)
+Added sections: none
 Removed sections: none
 Follow-up TODO: confirm the original ratification date.
 -->
@@ -35,6 +35,14 @@ when automated checks cannot cover their behavior.
 Changes MUST follow established project conventions and avoid unnecessary dependencies
 or infrastructure. Any external service required by a feature MUST be documented.
 
+### VI. Search Engine Optimization (SEO)
+Public pages MUST use semantic HTML, a logical heading hierarchy, descriptive page
+titles, and relevant meta descriptions. Pages intended for indexing MUST have crawlable
+links and accurate indexing directives; provide a sitemap and robots.txt when
+appropriate. Shareable pages MUST include Open Graph and Twitter/X card metadata with
+accurate titles, descriptions, canonical URLs, and preview images. Structured data MUST
+be accurate and reflect visible page content.
+
 ## Static Webapp Requirements
 
 The project MUST remain deployable as static assets without a required application
@@ -57,4 +65,4 @@ expanded requirements, and PATCH for clarifications that do not change requireme
 Every feature review MUST check applicable principles; any exception MUST be documented
 with its rationale and approved by the project maintainer.
 
-**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): confirm original adoption date | **Last Amended**: 2026-11-02
+**Version**: 1.1.0 | **Ratified**: TODO(RATIFICATION_DATE): confirm original adoption date | **Last Amended**: 2026-11-02
