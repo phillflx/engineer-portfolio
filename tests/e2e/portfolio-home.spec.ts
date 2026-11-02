@@ -3,12 +3,13 @@ import { expect, test } from "@playwright/test";
 test("visitors can identify the engineer and find the contact section", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/en");
 
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: /Hi, I’m Philipe Felix dos Santos/,
+      name: /Hi, I’m Philipe Felix/,
     }),
   ).toBeVisible();
   await expect(page.getByText(/software engineer/i).first()).toBeVisible();
@@ -42,19 +43,19 @@ test("visitors can identify the engineer and find the contact section", async ({
   await expect(page.locator("#contact a[href^='https://wa.me/']")).toHaveCount(1);
 
   await expect(page).toHaveTitle(
-    "Philipe Felix dos Santos — Software Engineer & Data Engineer",
+    "Philipe Felix — Software Engineer & Data Engineer",
   );
   await expect(page.locator('meta[name="description"]')).toHaveAttribute(
     "content",
-    "Explore the software and data engineering services and selected work of Philipe Felix dos Santos.",
+    "Explore the software and data engineering services and selected work of Philipe Felix.",
   );
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
-    "https://portfolio.example.com",
+    "https://portfolio.example.com/en",
   );
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
     "content",
-    "Philipe Felix dos Santos — Software Engineer & Data Engineer",
+    "Philipe Felix — Software Engineer & Data Engineer",
   );
   const socialImage = await page
     .locator('meta[property="og:image"]')

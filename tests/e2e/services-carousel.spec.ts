@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("visitors can browse all service offerings using the carousel controls", async ({
   page,
 }) => {
-  await page.goto("/#services");
+  await page.goto("/en#services");
 
   const services = page.getByRole("list", { name: "Service offerings" });
   const items = services.getByRole("listitem");

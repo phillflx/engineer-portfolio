@@ -1,19 +1,25 @@
-import type { SampleProject } from "../lib/portfolio";
+import type { PortfolioUi, SampleProject } from "../lib/portfolio";
 import { ContentCarousel } from "./ContentCarousel";
 import styles from "./ProjectsSection.module.css";
 
 type ProjectsSectionProps = {
   projects: SampleProject[];
+  ui: PortfolioUi;
 };
 
-export function ProjectsSection({ projects }: ProjectsSectionProps) {
+export function ProjectsSection({ projects, ui }: ProjectsSectionProps) {
   return (
     <section className={styles.section} id="projects" aria-labelledby="projects-title">
       <div className={styles.heading}>
-        <p className={styles.kicker}>A FEW THINGS I’VE MADE</p>
-        <h2 id="projects-title">Selected work<span>.</span></h2>
+        <p className={styles.kicker}>{ui.projectsKicker}</p>
+        <h2 id="projects-title">{ui.projectsTitle}<span>.</span></h2>
       </div>
-      <ContentCarousel label="Sample projects">
+      <ContentCarousel
+        label={ui.projectsCarouselLabel}
+        positionLabel={ui.carouselPosition}
+        previousLabel={ui.carouselPreviousProjects}
+        nextLabel={ui.carouselNextProjects}
+      >
         {projects.map((project, index) => (
           <article className={styles.card} key={project.title}>
             <div className={styles.imageFrame}>
@@ -27,12 +33,14 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               )}
             </div>
             <div className={styles.copy}>
-              <span className={styles.number}>PROJECT 0{index + 1}</span>
+              <span className={styles.number}>
+                {ui.projectIndex.replace("{index}", String(index + 1).padStart(2, "0"))}
+              </span>
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
               {project.link ? (
                 <a href={project.link} target="_blank" rel="noreferrer">
-                  View project <span aria-hidden="true">↗</span>
+                  {ui.projectLink} <span aria-hidden="true">↗</span>
                 </a>
               ) : null}
             </div>

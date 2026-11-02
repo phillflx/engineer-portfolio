@@ -50,7 +50,19 @@
   text-underline-offset: 0.3rem;
 }
 
-.details a span {
+.contactLabel {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--color-neon);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.contactValue {
+  overflow-wrap: anywhere;
+}
+
+.contactArrow {
   margin-left: 0.6rem;
   color: var(--color-neon);
 }

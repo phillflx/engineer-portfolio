@@ -70,6 +70,28 @@
   color: var(--color-neon);
 }
 
+.languageSelector select {
+  max-width: 100%;
+  padding: 0.55rem 0.4rem;
+  border: 1px solid var(--color-neon);
+  border-radius: 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.75rem;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
 .contactLink span {
   margin-left: 0.35rem;
 }
@@ -78,6 +100,7 @@
   .nav {
     width: calc(100% - 2rem);
     min-height: 68px;
+    gap: 0.5rem;
   }
 
   .brandText {
@@ -85,10 +108,20 @@
   }
 
   .links {
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .links a {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
+  }
+
+  .links .contactLink {
+    padding: 0.55rem 0.4rem;
+  }
+
+  .languageSelector select {
+    width: 4.7rem;
+    padding: 0.5rem 0.15rem;
+    font-size: 0.65rem;
   }
 }

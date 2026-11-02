@@ -1,0 +1,104 @@
+{
+  "locale": "pt-BR",
+  "profile": {
+    "name": "Philipe Felix",
+    "role": "Engenheiro de Software e Dados",
+    "introduction": "Projeto e desenvolvo plataformas de dados, serviços de back-end e aplicações web, com mais de 15 anos de experiência em arquitetura cloud-native, pipelines de ETL e liderança técnica.",
+    "primaryAction": {
+      "label": "Vamos conversar",
+      "href": "#contact"
+    },
+    "pageTitle": "Philipe Felix — Engenheiro de Software e Dados",
+    "metaDescription": "Conheça os serviços de engenharia de software e dados e alguns projetos de Philipe Felix.",
+    "canonicalUrl": "https://portfolio.example.com",
+    "socialImage": "/images/social-preview.png"
+  },
+  "ui": {
+    "languageSelectorLabel": "Idioma",
+    "mainNavigationLabel": "Navegação principal",
+    "brandHomeLabel": "Philipe Felix, início",
+    "brandTitle": "PORTFÓLIO",
+    "navServices": "Serviços",
+    "navProjects": "Projetos",
+    "navContact": "Contato",
+    "heroAvailability": "DISPONÍVEL PARA PROJETOS SELECIONADOS",
+    "heroGreeting": "Olá, eu sou",
+    "heroHeadline": "Eu construo",
+    "heroAccent": "o futuro digital.",
+    "scrollHint": "ROLE PARA EXPLORAR",
+    "heroIndex": "01 / INTRODUÇÃO",
+    "servicesKicker": "O QUE EU FAÇO",
+    "servicesTitle": "Serviços",
+    "servicesCarouselLabel": "Serviços oferecidos",
+    "projectsKicker": "ALGUNS PROJETOS QUE CRIEI",
+    "projectsTitle": "Trabalhos selecionados",
+    "projectsCarouselLabel": "Projetos de exemplo",
+    "projectLink": "Ver projeto",
+    "projectIndex": "PROJETO {index}",
+    "carouselPosition": "Item {current} de {total}",
+    "carouselPreviousServices": "Serviços anteriores",
+    "carouselNextServices": "Próximos serviços",
+    "carouselPreviousProjects": "Projetos anteriores",
+    "carouselNextProjects": "Próximos projetos",
+    "footerEyebrow": "TEM UM BOM PROJETO EM MENTE?",
+    "footerTitle": "Vamos tirar do",
+    "footerAccent": "papel.",
+    "emptyContacts": "Os dados de contato podem ser configurados nos dados do portfólio.",
+    "backToTop": "VOLTAR AO TOPO",
+    "socialImageAlt": "Imagem de compartilhamento do portfólio de Philipe Felix"
+  },
+  "services": [
+    {
+      "title": "Engenharia de dados",
+      "description": "Pipelines de dados e ETL na AWS e no Google Cloud, da ingestão com Apache Airflow a conjuntos de dados prontos para análise no BigQuery e no Amazon Athena."
+    },
+    {
+      "title": "Back-end e APIs",
+      "description": "APIs REST e microsserviços em Python, Java e Node.js, desenvolvidos com Docker, Kubernetes e pipelines de CI/CD."
+    },
+    {
+      "title": "Desenvolvimento web",
+      "description": "Aplicações web responsivas com JavaScript, TypeScript, React, Vue.js e ferramentas modernas de front-end."
+    },
+    {
+      "title": "Liderança técnica",
+      "description": "Decisões de arquitetura, revisões de código e mentoria para equipes de engenharia, incluindo aplicações com IA usando RAG e Model Context Protocol (MCP)."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Plataforma de inteligência para troca de dispositivos",
+      "summary": "Liderei uma iniciativa de ciência de dados para identificar trocas de dispositivos móveis a partir de registros de eventos e tráfego de rede. Desenvolvida para a UOL, a metodologia de identificação garantiu três anos consecutivos de contratos com uma grande empresa de eletrônicos."
+    },
+    {
+      "title": "UOL Tag Manager e PayUOL",
+      "summary": "Criei ferramentas de gestão de recursos publicitários, monitoramento e remarketing para a UOL, além do PayUOL, uma solução de paywall para páginas da UOL com testes segmentados."
+    },
+    {
+      "title": "Aplicativo Veja São Paulo",
+      "summary": "Desenvolvi um aplicativo híbrido para a Editora Abril que recomenda estabelecimentos com base na localização do usuário."
+    }
+  ],
+  "contacts": [
+    {
+      "label": "E-mail",
+      "value": "philipe.felixdossantos@gmail.com",
+      "href": "mailto:philipe.felixdossantos@gmail.com"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "https://www.linkedin.com/in/philipefelix/",
+      "href": "https://www.linkedin.com/in/philipefelix/"
+    },
+    {
+      "label": "GitHub",
+      "value": "https://github.com/phillflx",
+      "href": "https://github.com/phillflx"
+    },
+    {
+      "label": "WhatsApp",
+      "value": "+55 11 995748250",
+      "href": "https://wa.me/5511995748250"
+    }
+  ]
+}

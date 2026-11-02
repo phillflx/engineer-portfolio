@@ -1,3 +1,5 @@
+import { isLocale, type Locale } from "./locales";
+
 export type PrimaryAction = {
   label: string;
   href: string;
@@ -38,6 +40,46 @@ export type PortfolioData = {
   services: ServiceOffering[];
   projects: SampleProject[];
   contacts: ContactChannel[];
+};
+
+export type PortfolioUi = {
+  languageSelectorLabel: string;
+  mainNavigationLabel: string;
+  brandHomeLabel: string;
+  brandTitle: string;
+  navServices: string;
+  navProjects: string;
+  navContact: string;
+  heroAvailability: string;
+  heroGreeting: string;
+  heroHeadline: string;
+  heroAccent: string;
+  scrollHint: string;
+  heroIndex: string;
+  servicesKicker: string;
+  servicesTitle: string;
+  servicesCarouselLabel: string;
+  projectsKicker: string;
+  projectsTitle: string;
+  projectsCarouselLabel: string;
+  projectLink: string;
+  projectIndex: string;
+  carouselPosition: string;
+  carouselPreviousServices: string;
+  carouselNextServices: string;
+  carouselPreviousProjects: string;
+  carouselNextProjects: string;
+  footerEyebrow: string;
+  footerTitle: string;
+  footerAccent: string;
+  emptyContacts: string;
+  backToTop: string;
+  socialImageAlt: string;
+};
+
+export type LocalizedPortfolio = PortfolioData & {
+  locale: Locale;
+  ui: PortfolioUi;
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -178,7 +220,7 @@ function parseContacts(value: unknown): ContactChannel[] {
     const matchesProfile = isHttpsUrl(contactValue) && href === contactValue;
     const phoneDigits = contactValue.replace(/\D/g, "");
     const matchesWhatsApp =
-      label === "WhatsApp" &&
+      href.startsWith("https://wa.me/") &&
       /^\+\d[\d ]+$/.test(contactValue) &&
       href === `https://wa.me/${phoneDigits}`;
 
@@ -211,4 +253,63 @@ export function validatePortfolio(value: unknown): PortfolioData {
   }
 
   return { profile, services, projects, contacts };
+}
+
+const uiKeys: (keyof PortfolioUi)[] = [
+  "languageSelectorLabel",
+  "mainNavigationLabel",
+  "brandHomeLabel",
+  "brandTitle",
+  "navServices",
+  "navProjects",
+  "navContact",
+  "heroAvailability",
+  "heroGreeting",
+  "heroHeadline",
+  "heroAccent",
+  "scrollHint",
+  "heroIndex",
+  "servicesKicker",
+  "servicesTitle",
+  "servicesCarouselLabel",
+  "projectsKicker",
+  "projectsTitle",
+  "projectsCarouselLabel",
+  "projectLink",
+  "projectIndex",
+  "carouselPosition",
+  "carouselPreviousServices",
+  "carouselNextServices",
+  "carouselPreviousProjects",
+  "carouselNextProjects",
+  "footerEyebrow",
+  "footerTitle",
+  "footerAccent",
+  "emptyContacts",
+  "backToTop",
+  "socialImageAlt",
+];
+
+function parseUi(value: unknown): PortfolioUi {
+  if (!isRecord(value)) return fail("ui", "must be an object");
+
+  return Object.fromEntries(
+    uiKeys.map((key) => [key, requiredString(value, key, "ui")]),
+  ) as PortfolioUi;
+}
+
+export function validateLocalizedPortfolio(
+  value: unknown,
+  expectedLocale: Locale,
+): LocalizedPortfolio {
+  if (!isRecord(value)) return fail("portfolio", "must be an object");
+  if (!isLocale(value.locale) || value.locale !== expectedLocale) {
+    return fail("locale", `must match the supported locale "${expectedLocale}"`);
+  }
+
+  return {
+    ...validatePortfolio(value),
+    locale: expectedLocale,
+    ui: parseUi(value.ui),
+  };
 }

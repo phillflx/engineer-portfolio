@@ -11,10 +11,19 @@ import {
 
 type ContentCarouselProps = {
   label: string;
+  positionLabel: string;
+  previousLabel: string;
+  nextLabel: string;
   children: ReactNode;
 };
 
-export function ContentCarousel({ label, children }: ContentCarouselProps) {
+export function ContentCarousel({
+  label,
+  positionLabel,
+  previousLabel,
+  nextLabel,
+  children,
+}: ContentCarouselProps) {
   const viewportRef = useRef<HTMLUListElement>(null);
   const itemCount = Children.count(children);
   const [position, setPosition] = useState({
@@ -87,13 +96,15 @@ export function ContentCarousel({ label, children }: ContentCarouselProps) {
     <div className="carousel">
       <div className="carousel__controls">
         <p className="carousel__position" aria-live="polite">
-          Item {position.currentIndex + 1} of {itemCount}
+          {positionLabel
+            .replace("{current}", String(position.currentIndex + 1))
+            .replace("{total}", String(itemCount))}
         </p>
         <div className="carousel__buttons">
           <button
             type="button"
             className="carousel__button"
-            aria-label={`Previous ${label.toLowerCase()}`}
+            aria-label={previousLabel}
             onClick={previous}
             disabled={position.atStart}
           >
@@ -102,7 +113,7 @@ export function ContentCarousel({ label, children }: ContentCarouselProps) {
           <button
             type="button"
             className="carousel__button"
-            aria-label={`Next ${label.toLowerCase()}`}
+            aria-label={nextLabel}
             onClick={next}
             disabled={position.atEnd}
           >

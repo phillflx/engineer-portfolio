@@ -98,6 +98,39 @@ main > section {
   scroll-snap-align: start;
 }
 
+.localeChooser {
+  display: grid;
+  min-height: 100svh;
+  place-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.localeChooser h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 4rem);
+}
+
+.localeChooser p {
+  color: var(--color-muted);
+}
+
+.localeChooser__links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.localeChooser__links a {
+  min-width: 10rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-neon);
+  color: var(--color-neon);
+  text-decoration: none;
+}
+
 :focus-visible {
   outline: 3px solid var(--color-neon);
   outline-offset: 4px;

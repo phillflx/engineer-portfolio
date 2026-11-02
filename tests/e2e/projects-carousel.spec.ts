@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("visitors can browse sample projects and only see configured project links", async ({
   page,
 }) => {
-  await page.goto("/#projects");
+  await page.goto("/en#projects");
 
   const projects = page.getByRole("list", { name: "Sample projects" });
   const items = projects.getByRole("listitem");
@@ -11,7 +11,7 @@ test("visitors can browse sample projects and only see configured project links"
 
   await expect(items).toHaveCount(3);
   await expect(items.nth(0)).toContainText("Device Upgrade Intelligence Platform");
-  await expect(items.nth(0)).toContainText("Built for UOL");
+  await expect(items.nth(0)).toContainText("Led a data science initiative");
   await expect(page.getByText("Item 1 of 3")).toBeVisible();
 
   await expect(projects.locator('a[target="_blank"]')).toHaveCount(0);
@@ -22,7 +22,7 @@ test("visitors can browse sample projects and only see configured project links"
     await expect(page.getByText(/Item [2-3] of 3/)).toBeVisible();
     await expect(items.nth(1)).toContainText("UOL Tag Manager and PayUOL");
 
-    await page.goto("/#projects");
+    await page.goto("/en#projects");
     const nextButton = page.getByRole("button", { name: "Next sample projects" });
     const box = await nextButton.boundingBox();
     expect(box).not.toBeNull();

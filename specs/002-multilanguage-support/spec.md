@@ -62,6 +62,9 @@ and verify that it renders in the specified language.
    **Then** it displays in Brazilian Portuguese without requiring a prior selection.
 3. **Given** a visitor copies a language-specific URL and shares it, **When** another
    visitor opens that URL, **Then** the same language version is shown.
+4. **Given** a visitor opens an unsupported locale URL, **When** the static host
+   serves the 404 document, **Then** it shows an English-language recovery page
+   with a direct link to `/en`.
 
 ---
 
@@ -92,7 +95,8 @@ metadata.
 ### Edge Cases
 
 - When a visitor opens an unsupported language URL, the site MUST present the
-  English version and MUST NOT show untranslated or blank content.
+  English-language recovery page from the static 404 document and MUST NOT show
+  untranslated or blank content.
 - When a visitor changes language from a section with no exact counterpart, the
   selected language's homepage MUST be shown without an error.
 - When translated text is longer than its English equivalent, page sections,
@@ -135,7 +139,8 @@ metadata.
   provide localized page titles and meta descriptions.
 - **FR-009**: Each language version MUST provide accurate canonical, alternate
   language, Open Graph, and Twitter/X metadata for the matching content and URL.
-- **FR-010**: Unsupported language URLs MUST recover to the English version without
+- **FR-010**: Unsupported language URLs MUST display an English-language recovery
+  page from the static 404 document, including a direct link to `/en`, without
   displaying a broken or partially translated page.
 - **FR-011**: Both versions MUST retain the existing portfolio's responsive,
   keyboard-accessible, and reduced-motion behavior.
