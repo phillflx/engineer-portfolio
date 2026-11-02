@@ -11,7 +11,7 @@ test("visitors can browse all service offerings using the carousel controls", as
   const previous = page.getByRole("button", { name: "Previous service offerings" });
 
   await expect(items).toHaveCount(4);
-  await expect(items.nth(0)).toContainText("Web development");
+  await expect(items.nth(0)).toContainText("Data engineering");
   await expect(page.getByText("Item 1 of 4")).toBeVisible();
   await expect(previous).toBeDisabled();
   await expect(next).toBeEnabled();

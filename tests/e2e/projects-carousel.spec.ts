@@ -10,8 +10,8 @@ test("visitors can browse sample projects and only see configured project links"
   const next = page.getByRole("button", { name: "Next sample projects" });
 
   await expect(items).toHaveCount(3);
-  await expect(items.nth(0)).toContainText("Digital experiences");
-  await expect(items.nth(0)).toContainText("Replace this description");
+  await expect(items.nth(0)).toContainText("Device Upgrade Intelligence Platform");
+  await expect(items.nth(0)).toContainText("Built for UOL");
   await expect(page.getByText("Item 1 of 3")).toBeVisible();
 
   await expect(projects.locator('a[target="_blank"]')).toHaveCount(0);
@@ -20,7 +20,7 @@ test("visitors can browse sample projects and only see configured project links"
     await expect(next).toBeEnabled();
     await next.click();
     await expect(page.getByText(/Item [2-3] of 3/)).toBeVisible();
-    await expect(items.nth(1)).toContainText("Interface experiments");
+    await expect(items.nth(1)).toContainText("UOL Tag Manager and PayUOL");
 
     await page.goto("/#projects");
     const nextButton = page.getByRole("button", { name: "Next sample projects" });
@@ -33,6 +33,6 @@ test("visitors can browse sample projects and only see configured project links"
     await expect(page.getByText(/Item [2-3] of 3/)).toBeVisible();
   } else {
     await expect(next).toBeDisabled();
-    await expect(items.nth(2)).toContainText("Creative technology");
+    await expect(items.nth(2)).toContainText("Veja São Paulo app");
   }
 });

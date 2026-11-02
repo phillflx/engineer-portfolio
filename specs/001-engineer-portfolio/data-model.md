@@ -1,7 +1,8 @@
 # Data Model: Software Engineer Portfolio Homepage
 
-Portfolio data is public, version-controlled JSON consumed at build time. There is no
-database, user-generated content, runtime persistence, or authentication.
+Portfolio data in `app/data/portfolio.json` is public, version-controlled JSON
+consumed at build time. There is no database, user-generated content, runtime
+persistence, or authentication.
 
 ## Portfolio Profile
 

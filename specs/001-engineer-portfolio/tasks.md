@@ -29,10 +29,10 @@ and verified as an incremental delivery.
 **Purpose**: Establish validated JSON content, shared carousel behavior, and a page shell that all stories use.
 
 - [X] T004 [P] Add failing Vitest cases in `tests/content/portfolio.test.ts` for required profile, service, project, and contact-field validation from `data-model.md`.
-- [X] T005 Implement TypeScript content types and JSON validation in `lib/portfolio.ts`; enforce each data-model constraint verbatim, including “Non-empty after trimming,” “Valid HTTPS URL for the public homepage,” and “The footer MUST render only configured contact channels.”
-- [X] T006 Create valid, clearly replaceable sample portfolio content in `data/portfolio.json`; include profile, service, project, and contact entries without inventing real credentials or contact details.
-- [X] T007 Implement the shared manually controlled carousel in `components/ContentCarousel.tsx`, with labelled content, semantic list items, native previous/next buttons, visible position, keyboard/touch use, boundary states, and no auto-rotation.
-- [X] T008 Create the shared semantic page shell and section placeholders in `app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `components/SiteHeader.tsx`, `components/HeroCard.tsx`, `components/ServicesSection.tsx`, `components/ProjectsSection.tsx`, and `components/SiteFooter.tsx`; include stable anchor IDs for hero, services, projects, and contact.
+- [X] T005 Implement TypeScript content types and JSON validation in `app/lib/portfolio.ts`; enforce each data-model constraint verbatim, including “Non-empty after trimming,” “Valid HTTPS URL for the public homepage,” and “The footer MUST render only configured contact channels.”
+- [X] T006 Create valid, clearly replaceable sample portfolio content in `app/data/portfolio.json`; include profile, service, project, and contact entries without inventing real credentials or contact details.
+- [X] T007 Implement the shared manually controlled carousel in `app/components/ContentCarousel.tsx`, with labelled content, semantic list items, native previous/next buttons, visible position, keyboard/touch use, boundary states, and no auto-rotation.
+- [X] T008 Create the shared semantic page shell and section placeholders in `app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `app/components/SiteHeader.tsx`, `app/components/HeroCard.tsx`, `app/components/ServicesSection.tsx`, `app/components/ProjectsSection.tsx`, and `app/components/SiteFooter.tsx`; include stable anchor IDs for hero, services, projects, and contact.
 
 **Checkpoint**: JSON content validation, shared carousel, and all page section anchors are available before story implementation.
 
@@ -50,9 +50,9 @@ and verified as an incremental delivery.
 
 ### Implementation for User Story 1
 
-- [X] T010 [P] [US1] Implement the fixed, keyboard-accessible section menu in `components/SiteHeader.tsx` and style it in `components/SiteHeader.module.css`.
-- [X] T011 [P] [US1] Implement the centered hero card and primary action using profile data in `components/HeroCard.tsx` and style it in `components/HeroCard.module.css`.
-- [X] T012 [P] [US1] Implement the contact footer using configured contact channels only in `components/SiteFooter.tsx` and style it in `components/SiteFooter.module.css`.
+- [X] T010 [P] [US1] Implement the fixed, keyboard-accessible section menu in `app/components/SiteHeader.tsx` and style it in `app/components/SiteHeader.module.css`.
+- [X] T011 [P] [US1] Implement the centered hero card and primary action using profile data in `app/components/HeroCard.tsx` and style it in `app/components/HeroCard.module.css`.
+- [X] T012 [P] [US1] Implement the contact footer using configured contact channels only in `app/components/SiteFooter.tsx` and style it in `app/components/SiteFooter.module.css`.
 - [X] T013 [US1] Compose the profile-driven homepage and set descriptive title, meta description, canonical URL, Open Graph and Twitter/X card metadata in `app/page.tsx` and `app/layout.tsx`; add static indexing directives and sitemap generation in `app/robots.ts` and `app/sitemap.ts`.
 
 **Checkpoint**: User Story 1 is independently usable with the service and project section anchors available for later increments.
@@ -71,7 +71,7 @@ and verified as an incremental delivery.
 
 ### Implementation for User Story 2
 
-- [X] T015 [US2] Render validated service offerings through `components/ContentCarousel.tsx` in `components/ServicesSection.tsx` and style the section and cards in `components/ServicesSection.module.css`; preserve service constraints “Non-empty after trimming” and “Non-empty and understandable without additional context.”
+- [X] T015 [US2] Render validated service offerings through `app/components/ContentCarousel.tsx` in `app/components/ServicesSection.tsx` and style the section and cards in `app/components/ServicesSection.module.css`; preserve service constraints “Non-empty after trimming” and “Non-empty and understandable without additional context.”
 
 **Checkpoint**: User Story 2 is independently testable through its service section and carousel.
 
@@ -89,7 +89,7 @@ and verified as an incremental delivery.
 
 ### Implementation for User Story 3
 
-- [X] T017 [US3] Render validated sample projects through `components/ContentCarousel.tsx` in `components/ProjectsSection.tsx` and style the section and cards in `components/ProjectsSection.module.css`; preserve the constraints “Non-empty after trimming,” “Non-empty and accurately describes the example,” and “If supplied, must be valid and lead to related project information.”
+- [X] T017 [US3] Render validated sample projects through `app/components/ContentCarousel.tsx` in `app/components/ProjectsSection.tsx` and style the section and cards in `app/components/ProjectsSection.module.css`; preserve the constraints “Non-empty after trimming,” “Non-empty and accurately describes the example,” and “If supplied, must be valid and lead to related project information.”
 
 **Checkpoint**: User Story 3 is independently testable through its project section and carousel.
 
@@ -100,7 +100,7 @@ and verified as an incremental delivery.
 **Purpose**: Validate the complete homepage against responsive, accessible, SEO, and static-delivery requirements.
 
 - [X] T018 [P] Add cross-cutting Playwright checks in `tests/e2e/accessibility-responsive.spec.ts` for keyboard navigation, legibility, reduced-motion behavior, and usable layouts at 320 CSS pixels and 1440 CSS pixels without horizontal page scrolling.
-- [X] T019 Review and correct responsive layout, visible focus, contrast, and reduced-motion styling in `app/globals.css`, `components/SiteHeader.module.css`, `components/HeroCard.module.css`, `components/ServicesSection.module.css`, `components/ProjectsSection.module.css`, and `components/SiteFooter.module.css`.
+- [X] T019 Review and correct responsive layout, visible focus, contrast, and reduced-motion styling in `app/globals.css`, `app/components/SiteHeader.module.css`, `app/components/HeroCard.module.css`, `app/components/ServicesSection.module.css`, `app/components/ProjectsSection.module.css`, and `app/components/SiteFooter.module.css`.
 - [X] T020 Run `npm test` and `npm run build`, inspect the generated homepage and metadata in `out/`, and complete the scenarios in `specs/001-engineer-portfolio/quickstart.md`.
 
 ---
@@ -131,16 +131,16 @@ and verified as an incremental delivery.
 ## Parallel Example: User Story 1
 
 ```text
-Task: T010 Implement the fixed section menu in components/SiteHeader.tsx and components/SiteHeader.module.css
-Task: T011 Implement the hero card in components/HeroCard.tsx and components/HeroCard.module.css
-Task: T012 Implement the contact footer in components/SiteFooter.tsx and components/SiteFooter.module.css
+Task: T010 Implement the fixed section menu in app/components/SiteHeader.tsx and app/components/SiteHeader.module.css
+Task: T011 Implement the hero card in app/components/HeroCard.tsx and app/components/HeroCard.module.css
+Task: T012 Implement the contact footer in app/components/SiteFooter.tsx and app/components/SiteFooter.module.css
 ```
 
 ## Parallel Example: User Stories 2 and 3
 
 ```text
-Task: T015 Implement the services section in components/ServicesSection.tsx and components/ServicesSection.module.css
-Task: T017 Implement the projects section in components/ProjectsSection.tsx and components/ProjectsSection.module.css
+Task: T015 Implement the services section in app/components/ServicesSection.tsx and app/components/ServicesSection.module.css
+Task: T017 Implement the projects section in app/components/ProjectsSection.tsx and app/components/ProjectsSection.module.css
 ```
 
 ## Implementation Strategy

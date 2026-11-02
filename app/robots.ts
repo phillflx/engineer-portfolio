@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import portfolioJson from "../data/portfolio.json";
-import { validatePortfolio } from "../lib/portfolio";
+import portfolioJson from "./data/portfolio.json";
+import { validatePortfolio } from "./lib/portfolio";
 
 export const dynamic = "force-static";
 

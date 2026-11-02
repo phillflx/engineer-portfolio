@@ -1,15 +1,14 @@
 # Quickstart: Software Engineer Portfolio Homepage
 
-This guide describes how to validate the homepage after implementation. The repository
-does not yet contain an application manifest or test scripts; implementation must add
-the standard development, test, and static build commands before these steps can run.
+This guide describes how to validate the implemented static homepage.
 
 ## Prerequisites
 
 - Node.js version supported by the selected Next.js release.
 - npm and dependencies installed from the project manifest.
 - Chromium installed for Playwright with `npx playwright install chromium`.
-- Portfolio JSON populated with the required fields in [data-model.md](data-model.md).
+- Portfolio JSON in `app/data/portfolio.json`, populated with the required fields in
+  [data-model.md](data-model.md).
 
 ## Run locally
 
@@ -33,7 +32,8 @@ the standard development, test, and static build commands before these steps can
 4. Inspect the exported output directory (`out/`) and verify that the generated
    homepage contains the primary page content, descriptive metadata, canonical URL,
    Open Graph metadata, and Twitter/X card metadata without requiring a browser-side
-   JSON request.
+   JSON request. Verify the social-preview image referenced by Open Graph and
+   Twitter/X metadata is included in the exported static assets.
 5. Verify the exported site can be served as static files over HTTPS by the target
    hosting environment.
 

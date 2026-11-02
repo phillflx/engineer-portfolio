@@ -15,8 +15,8 @@ application server is required.
 
 ## Technical Context
 
-**Language/Version**: TypeScript; select a Next.js-supported Node.js version when the
-application is scaffolded.
+**Language/Version**: TypeScript; use a Node.js version supported by the configured
+Next.js release.
 
 **Primary Dependencies**: Next.js App Router and React; no carousel dependency is
 required unless implementation demonstrates a concrete need.
@@ -24,11 +24,9 @@ required unless implementation demonstrates a concrete need.
 **Storage**: Local JSON files committed with the site and read at build time; no
 database.
 
-**Testing**: Next.js production build/static export; automated checks for content
-validation and interactive behavior; keyboard, touch, responsive, reduced-motion,
-metadata, and generated HTML checks. The repository currently has no application
-manifest or test runner, so exact test scripts are to be established during
-implementation.
+**Testing**: `npm test`, `npm run test:e2e`, `npm run typecheck`, `npm run lint`, and
+`npm run build` validate content, interactions, accessibility, metadata, and static
+export behavior.
 
 **Target Platform**: Static hosting over HTTPS; current desktop and mobile browsers.
 
@@ -85,19 +83,22 @@ interface. The JSON content shape is documented in `data-model.md`.
 app/
 ├── layout.tsx
 ├── page.tsx
-└── globals.css
-components/
-├── SiteHeader.tsx
-├── HeroCard.tsx
-├── ContentCarousel.tsx
-├── ServicesSection.tsx
-├── ProjectsSection.tsx
-└── SiteFooter.tsx
-data/
-└── portfolio.json
-public/
-└── images/
-    └── social-preview.png
+├── globals.css
+├── components/
+│   ├── SiteHeader.tsx
+│   ├── HeroCard.tsx
+│   ├── ContentCarousel.tsx
+│   ├── ServicesSection.tsx
+│   ├── ProjectsSection.tsx
+│   └── SiteFooter.tsx
+├── data/
+│   └── portfolio.json
+├── lib/
+│   └── portfolio.ts
+└── public/
+    └── images/
+        ├── social-preview.png
+        └── social-preview.svg
 tests/
 ├── content/
 └── e2e/
@@ -105,8 +106,8 @@ next.config.ts
 package.json
 ```
 
-**Structure Decision**: Use a single Next.js App Router application. Keep page-level
-metadata and static content rendering in the app, isolate interactive navigation and
-carousel behavior into focused components, and keep public portfolio copy in local
-JSON. Add test files and package scripts as part of implementation because the current
-repository has no application source or package manifest.
+**Structure Decision**: Keep application code, local JSON, validation helpers, and
+image source files under `app/`. Import the social preview image as a static asset so
+the production build emits it with the other static files without adding a route or
+moving assets back to the repository root. Keep tests and project configuration at
+the repository root.

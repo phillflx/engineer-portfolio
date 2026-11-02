@@ -1,14 +1,14 @@
 {
   "profile": {
-    "name": "Philipe Felix dos Santos",
+    "name": "Philipe Felix",
     "role": "Software Engineer & Data Engineer",
     "introduction": "I design and build data platforms, backend services and web applications, bringing 15+ years of experience in cloud-native architecture, ETL pipelines and technical leadership.",
     "primaryAction": {
       "label": "Let’s talk",
       "href": "#contact"
     },
-    "pageTitle": "Philipe Felix dos Santos — Software Engineer & Data Engineer",
-    "metaDescription": "Explore the software and data engineering services and selected work of Philipe Felix dos Santos.",
+    "pageTitle": "Philipe Felix — Software Engineer & Data Engineer",
+    "metaDescription": "Explore the software and data engineering services and selected work of Philipe Felix.",
     "canonicalUrl": "https://portfolio.example.com",
     "socialImage": "/images/social-preview.png"
   },

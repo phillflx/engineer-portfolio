@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
-import portfolioJson from "../data/portfolio.json";
-import { HeroCard } from "../components/HeroCard";
-import { ProjectsSection } from "../components/ProjectsSection";
-import { ServicesSection } from "../components/ServicesSection";
-import { SiteFooter } from "../components/SiteFooter";
-import { SiteHeader } from "../components/SiteHeader";
-import { validatePortfolio } from "../lib/portfolio";
+import portfolioJson from "./data/portfolio.json";
+import socialPreview from "./public/images/social-preview.png";
+import { HeroCard } from "./components/HeroCard";
+import { ProjectsSection } from "./components/ProjectsSection";
+import { ServicesSection } from "./components/ServicesSection";
+import { SiteFooter } from "./components/SiteFooter";
+import { SiteHeader } from "./components/SiteHeader";
+import { validatePortfolio } from "./lib/portfolio";
 
 const portfolio = validatePortfolio(portfolioJson);
 const { profile } = portfolio;
-const socialImage = profile.socialImage
-  ? new URL(profile.socialImage, profile.canonicalUrl).toString()
+const socialImageSource =
+  profile.socialImage === "/images/social-preview.png"
+    ? socialPreview.src
+    : profile.socialImage;
+const socialImage = socialImageSource
+  ? new URL(socialImageSource, profile.canonicalUrl).toString()
   : undefined;
 
 export const metadata: Metadata = {

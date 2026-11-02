@@ -28,9 +28,11 @@ Changes to that content require a new build and deployment.
 
 ## JSON content and metadata
 
-**Decision**: Keep portfolio content in local JSON and read it during static
-generation. Define page metadata statically or derive it from that build-time content.
-Use a fixed social-preview image when supplied.
+**Decision**: Keep portfolio content in `app/data/portfolio.json` and read it during
+static generation. Define page metadata statically or derive it from that build-time
+content. Keep the social-preview source in `app/public/images/` and import it as a
+static asset so the exported page can reference the generated asset without adding a
+route.
 
 **Rationale**: The static export guide explains that build-time rendering produces
 static output. Next.js metadata exports are server-side and are included in generated

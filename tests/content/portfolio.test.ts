@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { validatePortfolio } from "../../lib/portfolio";
+import { validatePortfolio } from "../../app/lib/portfolio";
 
 const validPortfolio = {
   profile: {
