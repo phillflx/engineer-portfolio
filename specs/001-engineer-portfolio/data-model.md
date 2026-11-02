@@ -1,8 +1,9 @@
 # Data Model: Software Engineer Portfolio Homepage
 
-Portfolio data in `app/data/portfolio.json` is public, version-controlled JSON
-consumed at build time. There is no database, user-generated content, runtime
-persistence, or authentication.
+English and Brazilian Portuguese portfolio data in `app/data/portfolio.en.json` and
+`app/data/portfolio.pt-BR.json` are public, version-controlled JSON consumed at build
+time. There is no database, user-generated content, runtime persistence, or
+authentication.
 
 ## Portfolio Profile
 
@@ -69,3 +70,19 @@ The footer MUST render only configured contact channels.
   in these files.
 - The static build MUST fail clearly for invalid required content rather than silently
   rendering incomplete cards or metadata.
+
+## Section navigation state
+
+The current section is transient browser state and is not stored in portfolio JSON.
+
+| Fragment identifier | Page section | Rule |
+|---|---|---|
+| `hero` | Engineer introduction | Current when its visible viewport area is greatest. |
+| `services` | Services carousel | Current when its visible viewport area is greatest. |
+| `projects` | Sample projects carousel | Current when its visible viewport area is greatest. |
+| `contact` | Contact footer | Current when its visible viewport area is greatest. |
+
+Section identifiers MUST match the corresponding page element IDs and existing
+navigation links. Scroll-driven changes replace the current browser-history entry;
+they do not add one entry per section change. If two sections have equal visible area,
+the previously current section remains selected until one becomes larger.

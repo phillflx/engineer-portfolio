@@ -7,6 +7,7 @@ import { HeroCard } from "../components/HeroCard";
 import { LocaleChooser } from "../components/LocaleChooser";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { ServicesSection } from "../components/ServicesSection";
+import { SectionFragmentTracker } from "../components/SectionFragmentTracker";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { isLocale, type Locale } from "../lib/locales";
@@ -112,6 +113,7 @@ export default async function HomePage({ params }: LocalePageProps) {
 
   return (
     <>
+      <SectionFragmentTracker key={locale} />
       <SiteHeader locale={locale} ui={ui} />
       <main>
         <HeroCard profile={profile} ui={ui} />

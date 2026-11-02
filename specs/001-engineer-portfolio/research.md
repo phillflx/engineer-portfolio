@@ -28,17 +28,18 @@ Changes to that content require a new build and deployment.
 
 ## JSON content and metadata
 
-**Decision**: Keep portfolio content in `app/data/portfolio.json` and read it during
-static generation. Define page metadata statically or derive it from that build-time
-content. Keep the social-preview source in `app/public/images/` and import it as a
-static asset so the exported page can reference the generated asset without adding a
+**Decision**: Keep English and Brazilian Portuguese portfolio content in
+`app/data/portfolio.en.json` and `app/data/portfolio.pt-BR.json` and read it during
+static generation. Define localized page metadata from that build-time content. Keep
+the social-preview source in `app/public/images/` and import it as a static asset so
+the exported pages can reference the generated image without adding an application
 route.
 
 **Rationale**: The static export guide explains that build-time rendering produces
-static output. Next.js metadata exports are server-side and are included in generated
-HTML, which supports the SEO and sharing requirements without client-side metadata
-updates. A fixed Open Graph image uses the documented metadata file convention and
-does not require request-time generation.
+static output. The App Router metadata export is included in generated HTML, which
+supports the SEO and sharing requirements without client-side metadata updates. A
+fixed Open Graph image can be imported as a static asset and does not require
+request-time generation.
 
 **Alternatives considered**:
 
@@ -46,14 +47,13 @@ does not require request-time generation.
   content is rendered.
 - Request-dependent metadata or images are incompatible with a self-contained static
   export; a new build is the intended publishing path when portfolio data changes.
-- A generated image is possible, but is unnecessary unless the supplied fixed image
-  cannot meet the design needs.
+- A generated image is possible, but is unnecessary because the site already has a
+  supplied preview image.
 
 **Sources**:
 
 - [Next.js Metadata and OG Images](https://nextjs.org/docs/app/getting-started/metadata-and-og-images)
 - [Next.js generateMetadata](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)
-- [Next.js opengraph-image convention](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
 - [Next.js Static Exports](https://nextjs.org/docs/app/guides/static-exports)
 
 ## Accessible carousel interaction
@@ -81,11 +81,45 @@ requires reduced-motion support and clear behavior at carousel boundaries.
 - [WAI Carousel Functionality](https://www.w3.org/WAI/tutorials/carousels/functionality/)
 - [ARIA Authoring Practices carousel pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/)
 
+## Scroll-aware URL fragments
+
+**Decision**: Track the viewport-visible area of the existing `hero`, `services`,
+`projects`, and `contact` sections. The section with the greatest visible area is
+current; if two sections have equal visible area, retain the previous current section
+to avoid fragment flicker. Update the URL fragment with the native History API's
+`replaceState` so scroll-driven changes do not create browser-history entries. Keep
+existing anchor links as the navigation mechanism for explicit section selection.
+
+**Rationale**: The specification defines the current section by visible area, so
+comparing each section's visible rectangle against the viewport is more accurate than
+choosing the largest intersection ratio, which can favor a shorter section. Replacing
+the current history entry matches the clarified Back-button behavior. The application
+is a static export, so this interaction can run entirely in the browser without a
+server or external dependency. Next.js 16.4.4 documents native `pushState` and
+`replaceState` as integrated with the App Router.
+
+**Alternatives considered**:
+
+- Choosing the section whose top edge reaches a fixed threshold is simpler but does
+  not satisfy the clarified largest-visible-area rule.
+- Adding a history entry for each section reached while scrolling would make the
+  browser Back button replay incidental scroll changes.
+- Choosing the greatest intersection ratio is not equivalent to greatest visible
+  area when section heights differ.
+
+**Sources**:
+
+- Next.js 16.4.4 App Router documentation, `node_modules/next/dist/docs/01-app/01-getting-started/04-linking-and-navigating.md` (Native History API)
+- [MDN: History.replaceState()](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState)
+
 ## Resolved technical unknowns
 
 - **Static deployment model**: Next.js static export; no server or database.
 - **Content source and timing**: Local JSON rendered at build time.
 - **Metadata generation**: Static metadata rendered into the exported HTML.
 - **Carousel motion**: Manual controls without auto-rotation; honor reduced-motion.
+- **Scroll section selection**: Greatest visible viewport area; retain the previous
+  section for exact ties.
+- **Scroll history behavior**: Replace the current history entry for fragment updates.
 - **External interface contracts**: None. The site has no API or external system
   integration in the specified scope.

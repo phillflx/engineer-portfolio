@@ -7,26 +7,27 @@
 ## Summary
 
 Build a single-page software engineer portfolio with a dark cyberpunk visual style,
-sticky section navigation, an introductory hero, services and project carousels, and
-contact information. Use Next.js App Router with static export. Store portfolio content
-in local JSON and render it into the generated HTML at build time so essential content
-and metadata are present without client-side data fetching. No database or runtime
-application server is required.
+sticky section navigation, an introductory hero, services and project carousels,
+contact information, and scroll-aware URL fragments. Use Next.js App Router with
+static export and localized `/en` and `/pt-BR` pages. Store portfolio content in local
+JSON and render it into generated HTML at build time so essential content and metadata
+are present without client-side data fetching. A small client-side tracker will set the
+fragment to the section with the greatest visible area and replace the current history
+entry for scroll-driven changes. No database or runtime application server is required.
 
 ## Technical Context
 
-**Language/Version**: TypeScript; use a Node.js version supported by the configured
-Next.js release.
+**Language/Version**: TypeScript 6; Node.js version supported by Next.js 16.4.4.
 
-**Primary Dependencies**: Next.js App Router and React; no carousel dependency is
-required unless implementation demonstrates a concrete need.
+**Primary Dependencies**: Next.js 16.4.4 App Router and React 19; no carousel
+dependency is required.
 
-**Storage**: Local JSON files committed with the site and read at build time; no
-database.
+**Storage**: Local English and Brazilian Portuguese JSON files committed with the site
+and read at build time; no database.
 
 **Testing**: `npm test`, `npm run test:e2e`, `npm run typecheck`, `npm run lint`, and
-`npm run build` validate content, interactions, accessibility, metadata, and static
-export behavior.
+`npm run build` validate content, interactions (including fragment updates and browser
+history), accessibility, metadata, and static export behavior.
 
 **Target Platform**: Static hosting over HTTPS; current desktop and mobile browsers.
 
@@ -41,8 +42,9 @@ or secret data in public assets. Portfolio data is public content in JSON. Carou
 are manually controlled, keyboard and touch accessible, and respect reduced-motion
 preferences.
 
-**Scale/Scope**: One public homepage with hero, services carousel, projects carousel,
-and contact footer; no authentication or content-management service.
+**Scale/Scope**: One public homepage with localized static routes, hero, services
+carousel, projects carousel, contact footer, and four anchored sections; no
+authentication or content-management service.
 
 ## Constitution Check
 
@@ -81,24 +83,31 @@ interface. The JSON content shape is documented in `data-model.md`.
 
 ```text
 app/
-├── layout.tsx
-├── page.tsx
 ├── globals.css
+├── [[...locale]]/
+│   ├── layout.tsx
+│   └── page.tsx
 ├── components/
 │   ├── SiteHeader.tsx
 │   ├── HeroCard.tsx
 │   ├── ContentCarousel.tsx
 │   ├── ServicesSection.tsx
 │   ├── ProjectsSection.tsx
-│   └── SiteFooter.tsx
+│   ├── SiteFooter.tsx
+│   ├── LanguageSelector.tsx
+│   ├── LocaleChooser.tsx
+│   └── SectionFragmentTracker.tsx
 ├── data/
-│   └── portfolio.json
+│   ├── portfolio.en.json
+│   └── portfolio.pt-BR.json
 ├── lib/
+│   ├── locales.ts
 │   └── portfolio.ts
 └── public/
     └── images/
         ├── social-preview.png
         └── social-preview.svg
+
 tests/
 ├── content/
 └── e2e/
@@ -106,8 +115,9 @@ next.config.ts
 package.json
 ```
 
-**Structure Decision**: Keep application code, local JSON, validation helpers, and
-image source files under `app/`. Import the social preview image as a static asset so
-the production build emits it with the other static files without adding a route or
-moving assets back to the repository root. Keep tests and project configuration at
-the repository root.
+**Structure Decision**: Keep the shared localized page and layout in the optional
+locale route, reusable components and local content under `app/`, and tests and
+configuration at the repository root. The URL-fragment tracker belongs with the
+client-side page components and observes the existing stable section IDs (`hero`,
+`services`, `projects`, and `contact`). Import the social preview image as a static
+asset so the production build emits it with the other static files.
