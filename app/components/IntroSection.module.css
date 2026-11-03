@@ -67,6 +67,7 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  margin: 1.5rem 0;
 }
 
 .eyebrow span,
@@ -79,7 +80,7 @@
 }
 
 .role {
-  margin: 3.5rem 0 0.8rem;
+  margin: 0 0 0.8rem;
   color: var(--color-neon);
   font-size: 0.85rem;
   font-weight: 600;

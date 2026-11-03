@@ -16,7 +16,6 @@ export function IntroSection({ profile, ui }: IntroSectionProps) {
           <span />
           <span />
         </div>
-        <p className={styles.eyebrow}><span /> {ui.introAvailability}</p>
         <p className={styles.role}>{profile.role}</p>
         <h1 id="intro-title">
           {ui.introGreeting} <span className={styles.name}>{profile.name}</span>
@@ -24,6 +23,7 @@ export function IntroSection({ profile, ui }: IntroSectionProps) {
           {ui.introHeadline} <span className={styles.accent}>{ui.introAccent}</span>
         </h1>
         <p className={styles.introduction}>{profile.introduction}</p>
+        <p className={styles.eyebrow}><span /> {ui.introAvailability}</p>
         <a className={styles.action} href={profile.primaryAction.href}>
           {profile.primaryAction.label}<span aria-hidden="true">↗</span>
         </a>
