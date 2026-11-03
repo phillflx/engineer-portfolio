@@ -60,8 +60,12 @@
       "description": "Aplicações web responsivas com JavaScript, TypeScript, React, Vue.js e ferramentas modernas de front-end."
     },
     {
+      "title": "Engenharia de IA",
+      "description": "Integração de LLMs, RAG, finetuning e orquestração de agentes para soluções de IA generativa."
+    },
+    {
       "title": "Liderança técnica",
-      "description": "Decisões de arquitetura, revisões de código e mentoria para equipes de engenharia, incluindo aplicações com IA usando RAG e Model Context Protocol (MCP)."
+      "description": "Decisões de arquitetura, prototipagem e mentoria para equipes de engenharia."
     }
   ],
   "projects": [
