@@ -46,6 +46,7 @@ main > section {
 .carousel__controls {
   display: flex;
   min-height: 48px;
+  margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
 }
