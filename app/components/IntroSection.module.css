@@ -70,8 +70,10 @@
   margin: 1.5rem 0;
 }
 
-.eyebrow span,
-.scrollHint span {
+.eyebrow span:before,
+.scrollHint span:before {
+  content: "";
+  display: inline-block;
   width: 7px;
   height: 7px;
   border-radius: 50%;
