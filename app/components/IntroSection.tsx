@@ -27,7 +27,6 @@ export function IntroSection({ profile, ui }: IntroSectionProps) {
         <a className={styles.action} href={profile.primaryAction.href}>
           {profile.primaryAction.label}<span aria-hidden="true">↗</span>
         </a>
-        <span className={styles.index} aria-hidden="true">{ui.introIndex}</span>
       </article>
       <p className={styles.scrollHint}><span /> {ui.scrollHint}</p>
     </section>

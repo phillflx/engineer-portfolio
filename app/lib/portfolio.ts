@@ -55,7 +55,6 @@ export type PortfolioUi = {
   introHeadline: string;
   introAccent: string;
   scrollHint: string;
-  introIndex: string;
   servicesKicker: string;
   servicesTitle: string;
   servicesCarouselLabel: string;
@@ -268,7 +267,6 @@ const uiKeys: (keyof PortfolioUi)[] = [
   "introHeadline",
   "introAccent",
   "scrollHint",
-  "introIndex",
   "servicesKicker",
   "servicesTitle",
   "servicesCarouselLabel",
