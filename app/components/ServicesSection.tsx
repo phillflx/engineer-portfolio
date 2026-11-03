@@ -25,8 +25,10 @@ export function ServicesSection({ services, ui }: ServicesSectionProps) {
           <article className={styles.card} key={service.title}>
             <span className={styles.number}>0{index + 1}</span>
             <h3>{service.title}</h3>
-            <p>{service.description}</p>
-            <span className={styles.arrow} aria-hidden="true">↗</span>
+            <p>
+              <span className={styles.arrow} aria-hidden="true">↗</span>
+              {service.description}
+            </p>
           </article>
         ))}
       </ContentCarousel>
